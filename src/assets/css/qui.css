@@ -1,0 +1,246 @@
+/**
+ * @des 基础和弹性布局样式
+ * @create 2019/04/12
+ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  touch-action: none;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+  font-size: .7rem;
+  background: #f6f5f5;
+  overflow-x: hidden;
+  padding-top: constant(safe-area-inset-top);
+  padding-left: constant(safe-area-inset-left);
+  padding-right: constant(safe-area-inset-right);
+  padding-bottom: constant(safe-area-inset-bottom);
+}
+div {
+  outline: 0 !important;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline-offset: -2px;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+ul,
+li {
+  list-style: none;
+}
+[v-cloak] {
+  display: none;
+}
+.qui-page {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 9;
+}
+
+/**
+ * 元素1px边框
+ */
+.qui-bd-1px {
+  position: relative;
+  border: none;
+}
+.qui-bd-1px:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid #dddddd;
+  width: 200%;
+  height: 200%;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
+.qui-bd-t {
+  position: relative;
+}
+.qui-bd-t:before {
+  border-top: 1px solid #dddddd;
+  content: ' ';
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+}
+.qui-bd-b {
+  position: relative;
+}
+.qui-bd-b:after {
+  border-bottom: 1px solid #dddddd;
+  content: ' ';
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  -webkit-transform-origin: left bottom;
+  transform-origin: left bottom;
+}
+.qui-bd-l {
+  position: relative;
+}
+.qui-bd-l:after {
+  border-left: 1px solid #dddddd;
+  content: ' ';
+  display: block;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+}
+.qui-bd-r {
+  position: relative;
+}
+.qui-bd-r:after {
+  border-right: 1px solid #d8d8d8;
+  content: ' ';
+  display: block;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+}
+/* Retina 适配 */
+@media only screen and (-webkit-min-device-pixel-ratio: 2.0),
+only screen and (min--moz-device-pixel-ratio: 2.0),
+only screen and (-o-min-device-pixel-ratio: 200/100),
+only screen and (min-device-pixel-ratio: 2.0) {
+  .qui-bd-t:before,
+  .qui-bd-b:after {
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+  }
+  .qui-bd-l:after,
+  .qui-bd-r:after {
+      -webkit-transform: scaleX(0.5);
+      transform: scaleX(0.5);
+  }
+}
+@media (-webkit-device-pixel-ratio:3) {
+  .qui-bd-t:before,
+  .qui-bd-b:after {
+      -webkit-transform: scaleY(.3333);
+      transform: scaleY(.3333);
+  }
+  .qui-bd-l:after,
+  .qui-bd-r:after {
+      -webkit-transform: scaleX(.3333);
+      transform: scaleX(.3333);
+  }
+}
+@media (-webkit-device-pixel-ratio:4) {
+  .qui-bd-t:before,
+  .qui-bd-b:after {
+      -webkit-transform: scaleY(.25);
+      transform: scaleY(.25);
+  }
+  .qui-bd-l:after,
+  .qui-bd-r:after {
+      -webkit-transform: scaleX(.25);
+      transform: scaleX(.25);
+  }
+}
+
+/**
+ * 元素隐藏
+ */
+.qui-hide {
+  display: none;
+}
+.qui-of {
+  overflow: hidden;
+}
+
+/**
+ * 元素只显示一行，两行，三行多余的隐藏
+ */
+.qui-te {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+.qui-te2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.qui-te3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.bscroll-vertical-scrollbar {
+  width: 4PX !important
+}
+/**
+ * @des 弹性盒子
+ * @create 2019/4/12
+ */
+ .qui-fx {
+	display: flex
+}
+.fx-ver {
+	flex-direction: column
+}
+.fx-ac {
+	align-items: center
+}
+.fx-ae {
+	align-items: flex-end
+}
+.fx-jc {
+	justify-content: center
+}
+.fx-je {
+	justify-content: flex-end
+}
+.fx-jsb {
+	justify-content: space-between
+}
+.fx-jsa {
+	justify-content: space-around
+}
+.fx-wp {
+	flex-wrap: wrap
+}
+.fx-f1 {
+	min-width: 0px;
+	flex: 1;
+	position: relative;
+}
+.fx-f2 {
+	min-width: 0px;
+	flex: 2;
+	position: relative;
+}
