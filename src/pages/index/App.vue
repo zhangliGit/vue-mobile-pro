@@ -14,8 +14,13 @@
             </div>
             <div class="app-name" :style="{color: bgCol[app.randomNum]}">{{app.name}}</div>
           </div>
-          <div class="module-list">
-
+        </div>
+        <div class="module-list qui-fx fx-wp">
+          <div @click="goApp(app.url)" class="app-list module-app qui-fx fx-ver fx-ac fx-jc" v-for="app in moduleList" :key="app">
+            <div class="app-img" :style="{backgroundColor: bgCol[app.randomNum]}">
+              <img :src="app.icon" alt="" />
+            </div>
+            <div class="app-name" :style="{color: bgCol[app.randomNum]}">{{app.name}}</div>
           </div>
         </div>
       </scroll-list>
@@ -48,13 +53,13 @@ export default {
           name: 'Qui文档',
           icon: docs,
           randomNum: 0,
-          url: 'http://localhost:3000/#/'
+          url: 'https://zhangligit.github.io/qui-docs/#/'
         },
         {
           name: 'Qui组件',
           icon: demo,
           randomNum: 1,
-          url: 'http://localhost:3000/#/'
+          url: 'https://zhangligit.github.io/qui-docs/#/'
         },
         {
           name: 'Qui示例',
@@ -62,6 +67,8 @@ export default {
           url:  'demo',
           randomNum: 2,
         }
+      ],
+      moduleList: [
       ]
     }
   },
@@ -77,6 +84,9 @@ export default {
       }
     }
   },
+  mounted () {
+
+  }
 }
 </script>
 
@@ -92,28 +102,34 @@ export default {
     height: 0px;
   }
   .qui-list--toogle {
-    height: 200px;
+    height: 180px;
   }
   .app-list {
     width: 33.33%;
     .app-img {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.4rem;
+      height: 2.4rem;
       border-radius: 10px;
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
       img {
-        width: 1.4rem;
-        height: 1.4rem;
+        width: 1.5rem;
+        height: 1.5rem;
         display: block
       }
     }
     .app-name {
       margin-top: .2rem;
       color:#10436B;
-      font-size: .65rem;
+      font-size: .6rem;
+    }
+  }
+  .module-list {
+    background: #fff;
+    .module-app {
+      padding: .5rem 0;
     }
   }
 </style>

@@ -1,13 +1,6 @@
 <template>
   <div class="wrapper fx-f1 qui-of " ref="wrapper">
     <div ref = "scrollH">
-      <div v-show = "isFail" class="fail-dialog qui-fx fx-ver fx-ac fx-jc">
-        <div>
-          <i class="coicon coicon-wangluoguzhang co-cl-2" style="font-size: 4rem"></i>
-        </div>
-        <div class="co-fs-01 co-cl-2">数据请求失败，请重新尝试</div>
-        <div class="empty-height"></div>
-      </div>
       <div class="scroll-up-tip qui-fx fx-ac fx-jc">
         <div v-if="pullDownRefresh">
           <div  v-if="!loadTag">
@@ -25,10 +18,6 @@
               <spinner type="lines"></spinner><span class="co-pd-l02">正在刷新</span>
           </div>
         </div>
-      </div>
-      <div v-show="autoTag" class="scroll-nodata-pd qui-fx fx-ver fx-ac fx-jc">
-        <i class="coicon coicon-shielding co-mg-a04 co-fs-5"></i>
-				<div class="qui-fx fx-ac fx-jc">暂无数据</div>
       </div>
       <div v-show="!isShowData">
         <slot></slot>
