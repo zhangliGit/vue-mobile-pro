@@ -1,8 +1,9 @@
 <template>
   <scroll-list>
     <div>
-      <div @click="goDetail" style="padding: .8rem .5rem; background: #fff" class="qui-bd-b" v-for="i in 20" :key="i">
-        我是首页
+      <div @click="goDetail" class="qui-list qui-bd-b qui-fx fx-jsb" v-for="i in 20" :key="i">
+        <span>Qui前端框架</span>
+        <i class="iconfont iconxiangyou"></i>
       </div>
     </div>
   </scroll-list>
@@ -28,4 +29,8 @@ export default {
 </script>
 
 <style lang="less" scoped>
+  .qui-list {
+    padding: .8rem .5rem;
+    background: #fff
+  }
 </style>

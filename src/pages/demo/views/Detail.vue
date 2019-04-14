@@ -6,7 +6,8 @@
       </div>
     </header-com>
     <div class="fx-f1 qui-flex qui-ver">
-      <div class="">
+      <div class="qui-detail">
+        Qui前端框架
       </div>
     </div>
   </div>
@@ -40,5 +41,8 @@ export default {
   .back-btn {
     color:#fff;
     font-size: 1.2rem
+  }
+  .qui-detail {
+    padding: .8rem
   }
 </style>

@@ -70,7 +70,7 @@ export default {
   #footer {
     color: #666;
     height: 100px;
-    background: #fff;
+    background: #f5f5f5;
     .menu--active {
       color: #10436B;
       height: 100%;

@@ -1,7 +1,7 @@
 <template>
   <div class="qui-flex qui-page fx-ver">
     <header-com :title="title">
-      <div slot="rit-btn" @click="toogleDemo">
+      <div slot="rit-btn" :class="['rit-btn', {'down-aim': downTag}]" @click="toogleDemo">
         <img class="down-img" :src="show" alt="">
       </div>
     </header-com>
@@ -47,6 +47,7 @@ export default {
       title: 'Qui',
       show,
       toogle: true,
+      downTag: false,
       bgCol: ['#10436B','#1296db', '#0fcfff', '#13227a', '#1eae5d', '#394fd0'],
       appList: [
         {
@@ -75,6 +76,7 @@ export default {
   methods: {
     toogleDemo () {
       this.toogle = !this.toogle
+      this.downTag = !this.downTag
     },
     goApp (path) {
       if (path.indexOf('http') > -1) {
@@ -95,6 +97,12 @@ export default {
     width: 36px;
     height: 36px;
     display: block
+  }
+  .rit-btn {
+    transition: all .3s ease
+  }
+  .down-aim {
+    transform: rotate(180deg)
   }
   .qui-list {
     background-color: #fff;

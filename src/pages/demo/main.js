@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import 'assets/js/rem.js'
 import 'assets/css/qui.css'
+import './font/iconfont.css'
 
 import attachFastClick from 'fastclick'
 attachFastClick.attach(document.body)
