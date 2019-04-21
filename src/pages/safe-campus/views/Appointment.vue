@@ -1,29 +1,27 @@
 <template>
-  <div class="detail">
-    qui前端框架详情界面
+  <div class="appoint">
+    我的预约
   </div>
 </template>
 
 <script>
 export default {
-  name: 'detail',
-  components: {
-  },
+  name: 'appointment',
   data () {
     return {
     }
   },
-  computed: {
-  },
   methods: {
   },
   mounted () {
+
+
   }
 }
 </script>
 
 <style lang="less" scoped>
-  .detail {
-    padding: 32px;
+  .appoint {
+    padding: 50px;
   }
 </style>

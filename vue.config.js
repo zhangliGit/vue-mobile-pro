@@ -1,8 +1,6 @@
 
-const webpack = require('webpack')
 const utils = require('./build/utils')
 const path = require('path')
-const vuxLoader = require('vux-loader')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const resolve = (dir) => path.join(__dirname, dir)
 const isProduction = process.env.NODE_ENV === 'production'
@@ -10,7 +8,7 @@ module.exports = {
   publicPath: isProduction
     ? './'
     : '/',
-  // 是否在生产环境构建sourceMap 
+  // 是否在生产环境构建sourceMap
   productionSourceMap: false,
   // 配置多页面
   pages: {
@@ -19,37 +17,35 @@ module.exports = {
   chainWebpack: config => {
     // 添加别名
     config.resolve.alias
-     .set('@', resolve('src'))
-     .set('@c', resolve('src/components/common'))
-     .set('assets', resolve('src/assets'))
+      .set('@s', resolve('src'))
+      .set('@a', resolve('src/assets'))
+      .set('@c', resolve('src/components/common'))
+      .set('@q', resolve('src/components/qui'))
   },
   configureWebpack: config => {
-    // 配置vux
-    vuxLoader.merge(config, {
-        options: {},
-        plugins: ['vux-ui']
-    })
     // 配置cdn模块
-    config.externals = {
-      'vue': 'Vue',
-      'vue-router': 'VueRouter',
-      'vuex': 'Vuex',
-      'axios': 'axios'
-    }
-    // 压缩代码
-    config.optimization = {
-      minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            compress: {
-              warnings: false,
-              drop_console: true,
-              drop_debugger: false,
-              pure_funcs: ['console.log']
+    if (isProduction) {
+      config.externals = {
+        'vue': 'Vue',
+        'vue-router': 'VueRouter',
+        'vuex': 'Vuex',
+        'axios': 'axios'
+      }
+      // 压缩代码
+      config.optimization = {
+        minimizer: [
+          new UglifyJsPlugin({
+            uglifyOptions: {
+              compress: {
+                warnings: false,
+                drop_console: true,
+                drop_debugger: false,
+                pure_funcs: ['console.log']
+              }
             }
-          }
-        })
-      ]
+          })
+        ]
+      }
     }
   },
   // 本地访问代理
@@ -70,5 +66,5 @@ module.exports = {
       }
     },
     before: app => {}
-  },
+  }
 }

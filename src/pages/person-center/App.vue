@@ -17,6 +17,9 @@ export default {
     }
   },
   watch: {
+    /**
+     * @description 监听路由执行动画效果
+     */
     $route (to, from) {
       if (history.state === null || parseInt(history.state.key) < parseInt(this.lastKey)) {
         this.transitionName = 'slide-right'
@@ -41,12 +44,12 @@ export default {
 .slide-left-enter,
 .slide-right-leave-to {
     -webkit-transform: translate(100%, 0);
-    transform: translate(100%, 0)
+    transform: translate(100%, 0);
 }
 .slide-right-enter,
 .slide-left-leave-to
  {
-    -webkit-transform: translate(-99%, 0);
-    transform: translate(-99%, 0)
+    -webkit-transform: translate(-100%, 0);
+    transform: translate(-100%, 0);
 }
 </style>

@@ -1,26 +1,26 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'
-const Detail = (resolve) => { require(['../views/Detail.vue'], resolve) }
+const Appointment = (resolve) => { require(['../views/Appointment.vue'], resolve) }
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'hash', // history
+  mode: 'hash',
   routes: [
     {
       path: '/',
       name: 'home',
       component: Home,
       meta: {
-        title: '主页'
+        title: '平安校园'
       }
     },
     {
-      path: '/detail',
-      name: 'detail',
-      component: Detail,
+      path: '/appointment',
+      name: 'appointment',
+      component: Appointment,
       meta: {
-        title: '详情页'
+        title: '微信预约'
       }
     }
   ]

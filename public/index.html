@@ -34,10 +34,9 @@
         to{-webkit-transform:rotate(360deg);}
       }
   </style>
-    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
-    <script src="https://cdn.bootcss.com/vue-router/3.0.2/vue-router.min.js"></script>
-    <script src="https://cdn.bootcss.com/vuex/3.1.0/vuex.min.js"></script>
-    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+  <% htmlWebpackPlugin.options.cdnConfig.forEach(function(item){ %>
+    <script type="text/javascript" src="<%= item %>"></script>
+  <% }) %>
   </head>
   <body>
     <noscript>

@@ -1,17 +1,16 @@
 /**
- * @des 基础样式和弹性布局
- * @create 2019/04/12
+ * @description qui基础样式
+ * @author zhangli
  */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  touch-action: none;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
   font-size: .7rem;
-  background: #f6f5f5;
   overflow-x: hidden;
   padding-top: constant(safe-area-inset-top);
   padding-left: constant(safe-area-inset-left);
@@ -34,14 +33,11 @@ ul,
 li {
   list-style: none;
 }
-[v-cloak] {
-  display: none;
-}
+
 .qui-page {
-  position: fixed;
+  position: absolute;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: 9;
 }
 
@@ -114,7 +110,7 @@ li {
   position: relative;
 }
 .qui-bd-r:after {
-  border-right: 1px solid #d8d8d8;
+  border-right: 1px solid #dddddd;
   content: ' ';
   display: block;
   height: 100%;
@@ -167,6 +163,25 @@ only screen and (min-device-pixel-ratio: 2.0) {
 }
 
 /**
+ * 字体
+ */
+.qui-font01 {
+  font-size: .65rem;
+}
+.qui-font02 {
+  font-size: .6rem;
+}
+.qui-font1 {
+  font-size: .85rem;
+}
+.qui-font2 {
+  font-size: 1rem;
+}
+.qui-font3 {
+  font-size: 1.2rem
+}
+
+/**
  * 元素隐藏
  */
 .qui-hide {
@@ -200,39 +215,49 @@ only screen and (min-device-pixel-ratio: 2.0) {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-.bscroll-vertical-scrollbar {
-  width: 4PX !important
+
+/** 伸缩盒子盒子 **/
+
+.qui-fx {
+	display: flex;
 }
-/**
- * @des 弹性盒子
- * @create 2019/4/12
- */
- .qui-fx {
-	display: flex
+.qui-fx-ver {
+  display: flex;
+	flex-direction: column;
 }
-.fx-ver {
-	flex-direction: column
+.qui-fx-ac-jc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.fx-ac {
-	align-items: center
+.qui-fx-ac {
+  display: flex;
+	align-items: center;
 }
-.fx-ae {
-	align-items: flex-end
+.qui-fx-ae {
+  display: flex;
+	align-items: flex-end;
 }
-.fx-jc {
-	justify-content: center
+.qui-fx-jc {
+  display: flex;
+	justify-content: center;
 }
-.fx-je {
-	justify-content: flex-end
+.qui-fx-je {
+  display: flex;
+	justify-content: flex-end;
 }
-.fx-jsb {
-	justify-content: space-between
+.qui-fx-jsb {
+  display: flex;
+	justify-content: space-between;
 }
-.fx-jsa {
-	justify-content: space-around
+.qui-fx-jsa {
+  display: flex;
+	justify-content: space-around;
 }
-.fx-wp {
-	flex-wrap: wrap
+.qui-fx-wp {
+  display: flex;
+	flex-wrap: wrap;
 }
 .fx-f1 {
 	min-width: 0px;

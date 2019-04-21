@@ -1,11 +1,11 @@
-import Vue from 'vue';
-import App from './App.vue';
-import 'assets/js/rem.js'
-import 'assets/css/qui.css'
+import Vue from 'vue'
+import App from './App.vue'
+import '@a/js/rem.js'
+import '@a/css/qui-base.css'
 
 const attachFastClick = require('fastclick')
 attachFastClick.attach(document.body)
 
-const vm = new Vue({
+new Vue({
   render: h => h(App)
-}).$mount("#app")
+}).$mount('#app')
