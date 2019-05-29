@@ -29,7 +29,6 @@ const cdn = [
   'https://cdn.bootcss.com/vuex/3.1.0/vuex.min.js',
   'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js'
 ]
-
 // 多页面配置
 exports.entries = function () {
   let entries = {}
@@ -45,7 +44,7 @@ exports.entries = function () {
       title: '',
       // 在这个页面中包含的块，默认情况下会包含
       // 提取出来的通用 chunk 和 vendor chunk
-      cdnConfig: process.env.NODE_ENV === 'production' ? cdn : [],
+      cdnConfig: process.env.NODE_ENV === 'production' && process.env.VUE_APP_URL === 'prod' ? cdn : [],
       chunks: ['chunk-vendors', 'chunk-common', pageDir]
     }
   })

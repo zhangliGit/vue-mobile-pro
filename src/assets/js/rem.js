@@ -1,3 +1,7 @@
+/**
+ * @description 移动端字体动态适配
+ * @author zhangli
+ */
 
 ;(function () {
   var screenW = document.documentElement.clientWidth || document.body.clientWidth

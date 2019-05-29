@@ -2,12 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import $ajax from '@a/js/ajax-serve'
+import '@u/filters.js'
+import '@u/directives.js'
 import '@a/js/rem.js'
 import '@a/css/qui-base.css'
-import './font/iconfont.css'
+import '@a/js/vant-plugin.js'
+import './assets/css/vant-reset.less'
+
 
 import attachFastClick from 'fastclick'
 attachFastClick.attach(document.body)
+
+Vue.prototype.$ajax = $ajax
 
 new Vue({
   store,
@@ -15,7 +22,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-router.beforeEach((to, form, next) => {
+router.beforeEach((to, from, next) => {
   document.title = to.meta.title
   next()
 })

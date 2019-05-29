@@ -8,7 +8,7 @@ module.exports = {
     '@vue/standard'
   ],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // 'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     "indent": [2, 2], // 缩进2个空格
     "no-const-assign": 2, // 禁止修改const声明的变量
@@ -18,6 +18,7 @@ module.exports = {
     "eqeqeq": 2, // 必须使用全等
     "quotes": [1, "single"], //引号使用单引号
     "semi": 2, //不使用分号结尾
+    "no-console":'error'
   },
   parserOptions: {
     parser: 'babel-eslint'

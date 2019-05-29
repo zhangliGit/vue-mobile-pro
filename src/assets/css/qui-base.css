@@ -8,52 +8,75 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
   font-size: .7rem;
   overflow-x: hidden;
+  background-color: #fff;
   padding-top: constant(safe-area-inset-top);
   padding-left: constant(safe-area-inset-left);
   padding-right: constant(safe-area-inset-right);
   padding-bottom: constant(safe-area-inset-bottom);
 }
+
 div {
   outline: 0 !important;
   -webkit-text-size-adjust: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   position: relative;
 }
+
 input:focus,
 textarea:focus,
 select:focus {
-  outline-offset: -2px;
+  outline-offset: -1PX;
   outline: -webkit-focus-ring-color auto 5px;
 }
+
 ul,
 li {
   list-style: none;
 }
 
+button {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+
 .qui-page {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   z-index: 9;
 }
 
 /**
- * 元素1px边框
+ * 元素居中居右
+ */
+.qui-tx-c {
+  text-align: center
+}
+
+.qui-tx-r {
+  text-align: right
+}
+
+/**
+ * 元素1PX边框
  */
 .qui-bd-1px {
   position: relative;
   border: none;
 }
+
 .qui-bd-1px:after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  border: 1px solid #dddddd;
+  border: 1PX solid #dddddd;
   width: 200%;
   height: 200%;
   -webkit-transform: scale(0.5);
@@ -61,11 +84,13 @@ li {
   -webkit-transform-origin: left top;
   transform-origin: left top;
 }
+
 .qui-bd-t {
   position: relative;
 }
+
 .qui-bd-t:before {
-  border-top: 1px solid #dddddd;
+  border-top: 1PX solid #dddddd;
   content: ' ';
   display: block;
   width: 100%;
@@ -76,11 +101,13 @@ li {
   -webkit-transform-origin: left top;
   transform-origin: left top;
 }
+
 .qui-bd-b {
   position: relative;
 }
+
 .qui-bd-b:after {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1PX solid #dddddd;
   content: ' ';
   display: block;
   width: 100%;
@@ -91,11 +118,13 @@ li {
   -webkit-transform-origin: left bottom;
   transform-origin: left bottom;
 }
+
 .qui-bd-l {
   position: relative;
 }
+
 .qui-bd-l:after {
-  border-left: 1px solid #dddddd;
+  border-left: 1PX solid #dddddd;
   content: ' ';
   display: block;
   height: 100%;
@@ -106,11 +135,13 @@ li {
   -webkit-transform-origin: top left;
   transform-origin: top left;
 }
+
 .qui-bd-r {
   position: relative;
 }
+
 .qui-bd-r:after {
-  border-right: 1px solid #dddddd;
+  border-right: 1PX solid #dddddd;
   content: ' ';
   display: block;
   height: 100%;
@@ -121,63 +152,76 @@ li {
   -webkit-transform-origin: top right;
   transform-origin: top right;
 }
+
 /* Retina 适配 */
 @media only screen and (-webkit-min-device-pixel-ratio: 2.0),
 only screen and (min--moz-device-pixel-ratio: 2.0),
 only screen and (-o-min-device-pixel-ratio: 200/100),
 only screen and (min-device-pixel-ratio: 2.0) {
+
   .qui-bd-t:before,
   .qui-bd-b:after {
-      -webkit-transform: scaleY(0.5);
-      transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
   }
+
   .qui-bd-l:after,
   .qui-bd-r:after {
-      -webkit-transform: scaleX(0.5);
-      transform: scaleX(0.5);
+    -webkit-transform: scaleX(0.5);
+    transform: scaleX(0.5);
   }
 }
+
 @media (-webkit-device-pixel-ratio:3) {
+
   .qui-bd-t:before,
   .qui-bd-b:after {
-      -webkit-transform: scaleY(.3333);
-      transform: scaleY(.3333);
+    -webkit-transform: scaleY(.3333);
+    transform: scaleY(.3333);
   }
+
   .qui-bd-l:after,
   .qui-bd-r:after {
-      -webkit-transform: scaleX(.3333);
-      transform: scaleX(.3333);
+    -webkit-transform: scaleX(.3333);
+    transform: scaleX(.3333);
   }
 }
+
 @media (-webkit-device-pixel-ratio:4) {
+
   .qui-bd-t:before,
   .qui-bd-b:after {
-      -webkit-transform: scaleY(.25);
-      transform: scaleY(.25);
+    -webkit-transform: scaleY(.25);
+    transform: scaleY(.25);
   }
+
   .qui-bd-l:after,
   .qui-bd-r:after {
-      -webkit-transform: scaleX(.25);
-      transform: scaleX(.25);
+    -webkit-transform: scaleX(.25);
+    transform: scaleX(.25);
   }
 }
 
 /**
  * 字体
  */
-.qui-font01 {
+.qui-fs-01 {
   font-size: .65rem;
 }
-.qui-font02 {
+
+.qui-fs-02 {
   font-size: .6rem;
 }
-.qui-font1 {
+
+.qui-fs-1 {
   font-size: .85rem;
 }
-.qui-font2 {
+
+.qui-fs-2 {
   font-size: 1rem;
 }
-.qui-font3 {
+
+.qui-fs-3 {
   font-size: 1.2rem
 }
 
@@ -187,6 +231,7 @@ only screen and (min-device-pixel-ratio: 2.0) {
 .qui-hide {
   display: none;
 }
+
 .qui-of {
   overflow: hidden;
 }
@@ -201,6 +246,7 @@ only screen and (min-device-pixel-ratio: 2.0) {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
+
 .qui-te2 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -208,6 +254,7 @@ only screen and (min-device-pixel-ratio: 2.0) {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+
 .qui-te3 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -219,53 +266,69 @@ only screen and (min-device-pixel-ratio: 2.0) {
 /** 伸缩盒子盒子 **/
 
 .qui-fx {
-	display: flex;
+  display: flex;
 }
+
 .qui-fx-ver {
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
 }
+
+/**水平垂直居中**/
 .qui-fx-ac-jc {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+
+/**垂直居中**/
 .qui-fx-ac {
   display: flex;
-	align-items: center;
+  align-items: center;
 }
+
+/**垂直居下**/
 .qui-fx-ae {
   display: flex;
-	align-items: flex-end;
+  align-items: flex-end;
 }
+/**水平居中**/
 .qui-fx-jc {
   display: flex;
-	justify-content: center;
+  justify-content: center;
 }
+/**水平居右**/
 .qui-fx-je {
   display: flex;
-	justify-content: flex-end;
+  justify-content: flex-end;
 }
+
+/**水平两端对齐**/
 .qui-fx-jsb {
   display: flex;
-	justify-content: space-between;
+  justify-content: space-between;
 }
+/**水平等间距对齐**/
 .qui-fx-jsa {
   display: flex;
-	justify-content: space-around;
+  justify-content: space-around;
 }
+
+/**水平换行**/
 .qui-fx-wp {
   display: flex;
-	flex-wrap: wrap;
+  flex-wrap: wrap;
 }
-.fx-f1 {
-	min-width: 0px;
-	flex: 1;
-	position: relative;
+
+.qui-fx-f1 {
+  min-width: 0px;
+  flex: 1;
+  position: relative;
 }
-.fx-f2 {
-	min-width: 0px;
-	flex: 2;
-	position: relative;
+
+.qui-fx-f2 {
+  min-width: 0px;
+  flex: 2;
+  position: relative;
 }

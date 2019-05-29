@@ -52,14 +52,14 @@ export default {
           name: 'Qui文档',
           icon: docs,
           randomNum: 0,
-          url: 'https://zhangligit.github.io/qui-docs/#/'
+          url: 'http://192.168.1.28:3000/#/'
         },
         {
           id: 2,
           name: 'Qui组件',
           icon: demo,
           randomNum: 1,
-          url: 'https://zhangligit.github.io/qui-docs/#/'
+          url: 'http://192.168.1.28:3000/#/'
         },
         {
           id: 3,
@@ -70,20 +70,13 @@ export default {
         }
       ],
       moduleList: [
-        {
-          id: 1,
-          name: '平安校园',
-          icon: app,
-          url: 'safe-campus',
-          randomNum: 3
-        },
-        {
-          id: 2,
-          name: '个人中心',
-          icon: app,
-          url: 'person-center',
-          randomNum: 4
-        }
+        // {
+        //   id: 1,
+        //   name: '全品平安校园',
+        //   icon: app,
+        //   url: 'safe-campus',
+        //   randomNum: 3
+        // }
       ]
     }
   },
@@ -140,7 +133,7 @@ export default {
     transform: rotate(180deg)
   }
   .qui-list {
-    border-bottom: 1PX #f5f5f5 solid;
+    border-bottom: 1px #f5f5f5 solid;
     transition: height .3s linear;
     height: 0px;
     overflow: hidden;
@@ -151,8 +144,8 @@ export default {
   .app-list {
     width: 33.33%;
     .app-img {
-      width: 2.4rem;
-      height: 2.4rem;
+      width: 100px;
+      height: 100px;
       border-radius: 10px;
       text-align: center;
       display: flex;

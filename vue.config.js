@@ -4,10 +4,9 @@ const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const resolve = (dir) => path.join(__dirname, dir)
 const isProduction = process.env.NODE_ENV === 'production'
+const isCdn = process.env.VUE_APP_URL === 'prod'
 module.exports = {
-  publicPath: isProduction
-    ? './'
-    : '/',
+  publicPath: isProduction ? './' : '/',
   // 是否在生产环境构建sourceMap
   productionSourceMap: false,
   // 配置多页面
@@ -19,17 +18,18 @@ module.exports = {
     config.resolve.alias
       .set('@s', resolve('src'))
       .set('@a', resolve('src/assets'))
-      .set('@c', resolve('src/components/common'))
+      .set('@c', resolve('src/components'))
+      .set('@u', resolve('src/utils'))
       .set('@q', resolve('src/components/qui'))
   },
   configureWebpack: config => {
     // 配置cdn模块
-    if (isProduction) {
+    if (isProduction && isCdn) {
       config.externals = {
-        'vue': 'Vue',
+        vue: 'Vue',
         'vue-router': 'VueRouter',
-        'vuex': 'Vuex',
-        'axios': 'axios'
+        vuex: 'Vuex',
+        axios: 'axios'
       }
       // 压缩代码
       config.optimization = {
@@ -39,8 +39,7 @@ module.exports = {
               compress: {
                 warnings: false,
                 drop_console: true,
-                drop_debugger: false,
-                pure_funcs: ['console.log']
+                drop_debugger: true
               }
             }
           })
