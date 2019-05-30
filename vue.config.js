@@ -19,7 +19,6 @@ module.exports = {
       .set('@s', resolve('src'))
       .set('@a', resolve('src/assets'))
       .set('@c', resolve('src/components'))
-      .set('@u', resolve('src/utils'))
       .set('@q', resolve('src/components/qui'))
   },
   configureWebpack: config => {
@@ -37,9 +36,6 @@ module.exports = {
           new UglifyJsPlugin({
             uglifyOptions: {
               compress: {
-                warnings: false,
-                drop_console: true,
-                drop_debugger: true
               }
             }
           })
