@@ -1,34 +1,37 @@
-# vue-app-demo
+### vue-mobile-app
 
-## Project setup
+#### 安装依赖
 ```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn run serve
+> cnpm i or yarn install
 ```
 
-### Compiles and minifies for production
+#### 本地启动
 ```
-yarn run build
+> npm run dev  // 启动开发环境
+
+> npm run dev-test // 启动测试环境
+
+> npm run dev-prod  //启动正式环境
 ```
 
-### Run your tests
+
+#### 本地打包
+
 ```
-yarn run test
+> npm run build // 打包开发环境
+
+> npm run build-test // 打包测试环境
+
+> npm run build-prod // 打包正式环境 
 ```
 
-### Lints and fixes files
-```
-yarn run lint
-```
+> 打包时要分模块打包, 单独打包每个模块, 只需要传入模块文件名即可, 否则会打包所有模块
 
-### Run your unit tests
 ```
-yarn run test:unit
-```
+// 如果项目中同时开发了两个模块 demo和main，打包时
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+> npm run build demo
+
+> npm run build main
+
+```
