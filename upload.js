@@ -25,7 +25,7 @@ let total = 1
 let time = setInterval(() => {
   console.log(total++)
 }, 1000)
-var url = 'http://192.168.1.28:3001/upload-single'
+var url = 'http://182.61.51.200:3001/upload-single'
 var formData = {
   file: fs.createReadStream(path.resolve(__dirname, `${buildModule}.zip`))
 }
