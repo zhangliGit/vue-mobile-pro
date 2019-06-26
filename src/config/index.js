@@ -7,7 +7,7 @@ const ConfigEnv = process.env.VUE_APP_URL
 let hostEnv = ''
 
 if (ConfigEnv === 'test') {
-  hostEnv = 'wx9396effa73d18044'
+  hostEnv = 'http://test'
 } else if (ConfigEnv === 'prod') {
   hostEnv = 'http://prod'
 } else {

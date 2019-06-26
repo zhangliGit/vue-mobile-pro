@@ -34,6 +34,8 @@ request.post({
   formData: formData
 }, function (error, response, body) {
   if (!error && response.statusCode === 200) {
+    // 删除压缩包
+    fs.unlink(`${buildModule}.zip`, function () {})
     console.log('上传成功')
     clearInterval(time)
   }
