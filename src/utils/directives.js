@@ -1,5 +1,5 @@
 /**
- * @des 注册全局指令
+ * @description 注册全局指令
  */
 
 import Vue from 'vue'

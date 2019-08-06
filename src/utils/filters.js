@@ -1,6 +1,6 @@
 
 /**
- * @des 注册全局过滤器
+ * @description 注册全局过滤器
  */
 
 import Vue from 'vue'

@@ -1,5 +1,5 @@
-import apiList from '@api/home.js'
-import $ajax from '@a/js/ajax-serve'
+import apiList from '../../api/index.js'
+import $ajax from '@u/ajax-serve'
 const localData = window.localStorage.getItem('vuex')
 
 /**
@@ -25,10 +25,12 @@ for (const key in apiList) {
     commit,
     state
   }, params = {}) {
+    // 是否显示加载提示
+    const isLoad = apiList[key].split('#')[2] === undefined
     const res = await $ajax[type]({
       url: url,
       params
-    }, apiList[key].split('#')[2] === undefined)
+    }, isLoad)
     /**
      * @des 数据请求成功后，设置全局vuex属性
      * @param {key} 请求的url路径
@@ -43,7 +45,7 @@ for (const key in apiList) {
 const home = {
   namespaced: true,
   state: {
-    list: localData ? JSON.parse(localData).home.list : '',
+    list: localData ? JSON.parse(localData).home.list : ''
   },
   actions: {
     ...actions

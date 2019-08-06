@@ -10,7 +10,7 @@
 <script>
 import { mapState, mapActions } from 'vuex'
 export default {
-  name: 'home',
+  name: 'Home',
   data () {
     return {
     }

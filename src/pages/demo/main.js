@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import $ajax from '@u/ajax-serve'
+import tools from '@u/tools'
 import '@u/filters.js'
 import '@u/directives.js'
 import '@u/rem.js'
@@ -15,6 +16,7 @@ import attachFastClick from 'fastclick'
 attachFastClick.attach(document.body)
 
 Vue.prototype.$ajax = $ajax
+Vue.prototype.$tools = tools
 new Vue({
   store,
   router,

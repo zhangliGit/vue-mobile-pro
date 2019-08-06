@@ -7,7 +7,7 @@
 <script>
 import { mapActions } from 'vuex'
 export default {
-  name: 'detail',
+  name: 'Detail',
   data () {
     return {
       detail: {}
