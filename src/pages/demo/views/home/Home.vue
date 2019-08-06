@@ -36,10 +36,7 @@ export default {
 
 <style lang="less" scoped>
   .bg-1 {
-    background: #444
-  }
-  .bg-1(@c) {
-    background: @c
+    background: #999
   }
   .qui-list {
     .bg-1;

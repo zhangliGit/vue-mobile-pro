@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Home from './module/home'
+import home from './module/home'
+import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    Home
+    home
   },
+  plugins: [createPersistedState()],
   state: {}
 })
 

@@ -1,12 +1,6 @@
-
-/**
- * @des 首页数据管理模块
- * @author zhangli
- * @date 2019-05-29
- */
-
-import homeApi from '@api/index'
-import $ajax from '@u/ajax-serve'
+import apiList from '@api/home.js'
+import $ajax from '@a/js/ajax-serve'
+const localData = window.localStorage.getItem('vuex')
 
 /**
  * @description 处理请求成功后返回Promise方便vue界面处理数据
@@ -17,39 +11,71 @@ function resultBack (res) {
     resolve(res)
   })
 }
-const HOME = {
+/**
+ * @description 当前模块接口列表
+ * @param {url} 功能接口
+ * @param {type} 请求类型
+ * @param {params} 请求参数
+ */
+const actions = Object.create(null)
+for (const key in apiList) {
+  const url = apiList[key].split('#')[0]
+  const type = apiList[key].split('#')[1]
+  actions[key] = async function ({
+    commit,
+    state
+  }, params = {}) {
+    const res = await $ajax[type]({
+      url: url,
+      params
+    }, apiList[key].split('#')[2] === undefined)
+    /**
+     * @des 数据请求成功后，设置全局vuex属性
+     * @param {key} 请求的url路径
+     * @param {res} 请求返回的结果
+     */
+    setVuex({
+      commit
+    }, key, res)
+    return resultBack(res)
+  }
+}
+const home = {
   namespaced: true,
   state: {
-    indexList: []
+    list: localData ? JSON.parse(localData).home.list : '',
   },
   actions: {
-    /**
-     * @des 首页列表
-     */
-    async getIndex ({ commit, state }, params = {}) {
-      let res = await $ajax.post({
-        url: homeApi.getIndex,
-        params
-      })
-      commit('setData', { key: 'indexList', data: res.data })
-    },
-    /**
-     * @des 详情页
-     */
-    async getDetail ({ commit, state }, params = {}) {
-      let res = await $ajax.get({
-        url: homeApi.getDetail,
-        params
-      })
-      return resultBack(res.data)
-    }
+    ...actions
   },
   mutations: {
-    setData (state, { key, data }) {
-      state[key] = data
+    /**
+     * @description 设置state值
+     * @param { key } state属性
+     * @param { data } 存在的数据
+     */
+    setData (state, data) {
+      state[data.key] = data.data
     }
   }
-
 }
 
-export default HOME
+/**
+ * @description 存在vuex数据到本地
+ * @param {path} 请求的url路径，需要在哪些请求里面进行设置
+ * @param {res} 处理的数据
+ * @param remark 同样可以在请求成功后的then方法里面调用setData存储全局状态
+ */
+
+const setVuex = function ({
+  commit
+}, path, res) {
+  if (path === 'getIndex') {
+    commit('setData', {
+      key: 'dataList',
+      data: res.data
+    })
+  }
+}
+
+export default home
