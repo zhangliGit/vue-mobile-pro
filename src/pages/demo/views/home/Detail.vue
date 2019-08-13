@@ -16,13 +16,13 @@ export default {
   watch: {
   },
   methods: {
-    ...mapActions('Home', [
+    ...mapActions('home', [
       'getDetail'
     ])
   },
   mounted () {
-    this.getDetail().then(data => {
-      this.detail = data
+    this.getDetail().then(res => {
+      this.detail = res.data
     })
   }
 }

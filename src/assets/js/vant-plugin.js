@@ -12,6 +12,7 @@ import {
   RadioGroup,
   Picker,
   Popup,
+  ActionSheet,
   DatetimePicker
 } from 'vant'
 
@@ -22,4 +23,5 @@ Vue.use(Notify)
 Vue.use(RadioGroup)
 Vue.use(Picker)
 Vue.use(Popup)
+Vue.use(ActionSheet)
 Vue.use(DatetimePicker)

@@ -1,0 +1,70 @@
+<template>
+  <div id="header" class="header">
+    <div class="header-slide qui-fx">
+      <div class="back-btn" @click="goBack" v-if="isBack">
+        <img :src="back" alt="">
+      </div>
+    </div>
+    <div class="co-header-title">{{title}}</div>
+    <div class="header-slide qui-fx-je">
+    </div>
+  </div>
+</template>
+<script>
+import back from '../assets/img/back.png'
+export default {
+  name: 'HeaderCom',
+  props: {
+    isBack: {
+      type: Boolean,
+      default: false
+    },
+    title: {
+      type: String,
+      default: 'Qui'
+    }
+  },
+  data () {
+    return {
+      back
+    }
+  },
+  methods: {
+    goBack () {
+      this.$router.go(-1)
+    }
+  }
+}
+</script>
+
+<style lang="less" scoped>
+ #header {
+    width: 100%;
+    background: #10436B;
+    padding: 0 .5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    .back-btn {
+      img {
+        width: 48px;
+        height: 48px;
+        display: block
+      }
+    }
+    .header-slide {
+      min-width:4rem
+    }
+    .co-header-title {
+      flex: 1;
+      color:#fff;
+      font-size: .8rem;
+      text-align: center;
+      height: 44Px;
+      line-height: 44Px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+</style>

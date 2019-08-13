@@ -4,7 +4,7 @@
  * @params false: 请求没有加载提示，默认有
  */
 
-import hostEnv from '@config'
+import hostEnv from '@config/index'
 
 
 let homeApi = {

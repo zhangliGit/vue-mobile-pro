@@ -15,13 +15,13 @@ module.exports = {
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
     // 添加别名
     config.resolve.alias
+      config.resolve.alias
       .set('@s', resolve('src'))
-      .set('@c', resolve('src/components'))
-      .set('@u', resolve('src/utils'))
       .set('@p', resolve('src/pages'))
       .set('@a', resolve('src/assets'))
-      .set('@api', resolve('src/api'))
-      .set('@config', resolve('src/config'))
+      .set('@c', resolve('src/components'))
+      .set('@config', resolve('src/config/'))
+      .set('@u', resolve('src/utils'))
   },
   configureWebpack: config => {
     // 配置cdn模块

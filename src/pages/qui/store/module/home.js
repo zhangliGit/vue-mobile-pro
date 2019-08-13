@@ -46,7 +46,6 @@ for (const key in apiList) {
 const home = {
   namespaced: true,
   state: {
-    indexList: []
   },
   actions: {
     ...actions

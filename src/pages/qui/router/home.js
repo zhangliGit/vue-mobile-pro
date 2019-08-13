@@ -13,11 +13,6 @@ const Home = [
     type: 'index',
     keepAlive: true,
     title: '首页'
-  },
-  {
-    module: 'home',
-    path: 'Detail',
-    title: '详情'
   }
 ]
 

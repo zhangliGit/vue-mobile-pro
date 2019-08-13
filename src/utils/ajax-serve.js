@@ -25,7 +25,11 @@ axios.interceptors.response.use(function (response) {
 })
 
 const showToast = (tip = '') => {
-  Vue.prototype.$toast.loading({ mask: true, message: tip, duration: 0 })
+  Vue.prototype.$toast.loading({
+    mask: true,
+    message: tip,
+    duration: 0
+  })
 }
 
 // 处理响应结果
@@ -73,6 +77,36 @@ const $ajax = {
         headers: {
           'Content-Type': 'application/json'
         }
+      })
+      res = res.data
+      return responseRes(res)
+    } catch (err) {
+      return responseRes(err.response.data)
+    }
+  },
+  async postQuery (obj, tag = true) {
+    if (tag) showToast()
+    try {
+      let res = await axios({
+        url: obj.url,
+        method: 'post',
+        data: JSON.stringify(obj.params),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      res = res.data
+      return responseRes(res)
+    } catch (err) {
+      return responseRes(err.response.data)
+    }
+  },
+  async getWithPara (obj, tag = true) {
+    if (tag) showToast()
+    try {
+      let res = await axios({
+        url: obj.url + obj.params,
+        method: 'get'
       })
       res = res.data
       return responseRes(res)

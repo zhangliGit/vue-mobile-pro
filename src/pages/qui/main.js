@@ -10,22 +10,10 @@ import '@u/rem.js'
 import '@a/css/qui-base.css'
 import '@a/css/global.less'
 import '@a/js/vant-plugin.js'
+import './assets/css/common.less'
 
 import attachFastClick from 'fastclick'
 attachFastClick.attach(document.body)
-/**
- * @description 处理fastClick导出文本输入框点击不灵敏bug
- */
-attachFastClick.prototype.focus = function (targetElement) {
-  let length
-  if (targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month') {
-    length = targetElement.value.length
-    targetElement.focus()
-    targetElement.setSelectionRange(length, length)
-  } else {
-    targetElement.focus()
-  }
-}
 
 Vue.prototype.$ajax = $ajax
 Vue.prototype.$tools = tools

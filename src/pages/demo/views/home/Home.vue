@@ -1,27 +1,33 @@
 <template>
-  <div class="home">
-    <div @click="goDetail" class="qui-list qui-bd-b" v-for="list in indexList" :key="list.id">
-      <div class="qui-te2">{{list.title}}</div>
-      <div class="qui-tx-r" v-setBg="'#666'">{{list.time | setTime(123)}}</div>
-    </div>
+  <div class="home qui-page qui-fx-ver">
+    <scroll-list>
+      <div @click="goDetail" class="qui-list qui-bd-b" v-for="list in indexList" :key="list.id">
+        <div class="qui-te2">{{list.title}}</div>
+        <div class="time">{{list.time | setTime(123)}}</div>
+      </div>
+    </scroll-list>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import ScrollList from '@c/common/ScrollList'
 export default {
   name: 'Home',
   data () {
     return {
     }
   },
+  components: {
+    ScrollList
+  },
   computed: {
-    ...mapState('Home', [
+    ...mapState('home', [
       'indexList'
     ])
   },
   methods: {
-    ...mapActions('Home', [
+    ...mapActions('home', [
       'getIndex'
     ]),
     goDetail () {
@@ -35,12 +41,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-  .bg-1 {
-    background: #999
-  }
   .qui-list {
-    .bg-1;
-    padding: 40px 30px;
-    color: @myColor
+    padding: 20px 30px;
+    .time {
+      color: @second-color;
+      text-align:right;
+      margin-top: 10px;
+    }
   }
 </style>

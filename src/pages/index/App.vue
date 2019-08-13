@@ -59,11 +59,11 @@ export default {
           name: 'Qui组件',
           icon: demo,
           randomNum: 1,
-          url: 'http://192.168.1.28:3000/#/'
+          url: 'qui'
         },
         {
           id: 3,
-          name: 'Qui示例',
+          name: '项目模块',
           icon: app,
           url: 'demo',
           randomNum: 2
