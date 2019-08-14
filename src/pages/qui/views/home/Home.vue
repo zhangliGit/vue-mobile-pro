@@ -43,7 +43,7 @@ export default {
       ],
       title: 'Qui组件',
       currentIndex: 0,
-      menuList: [Toast, Scroll, DateTime, Data, Form]
+      menuList: [Toast, Scroll, DateTime, Form, Data]
     }
   },
   methods: {

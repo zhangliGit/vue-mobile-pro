@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :style="{backgroundColor: bgColor}" ref="wrapper">
+  <div class="wrapper" ref="wrapper">
     <slot></slot>
   </div>
 </template>
@@ -7,20 +7,15 @@
 import BScroll from 'better-scroll'
 export default {
   name: 'LevelScroll',
+  components: {
+  },
   props: {
-    bgColor: {
-      type: String,
-      default: '#fff'
-    }
   },
   data () {
     return {
     }
   },
   methods: {
-    refresh () {
-      this.scroll.refresh()
-    }
   },
   mounted () {
     this.$nextTick(() => {
@@ -28,12 +23,9 @@ export default {
         click: true,
         scrollX: true
       })
-      this.scroll.refresh()
     })
   }
 }
 </script>
 <style lang="less">
-  .wrapper {
-  }
 </style>

@@ -10,8 +10,8 @@ const Data = [
   {
     module: 'data',
     path: 'NoData',
-    title: '列表内容暂无数据'
-  },
+    title: '暂无数据'
+  }
 ]
 
 export default Data

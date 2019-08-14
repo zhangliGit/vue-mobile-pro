@@ -13,7 +13,7 @@ export default {
     // 滚动间隔时间
     time: {
       type: Number,
-      default: 3000
+      default: 4000
     },
     bgColor: {
       type: String,
@@ -55,7 +55,7 @@ export default {
         this.mTop = 0
         currIndex = 1
       }
-    }, 6000)
+    }, this.time)
   }
 }
 </script>

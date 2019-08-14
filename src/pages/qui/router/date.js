@@ -9,9 +9,14 @@
 const Date = [
   {
     module: 'date',
+    path: 'CalendarShow',
+    title: '日历控件'
+  },
+  {
+    module: 'date',
     path: 'DateTime',
     title: '日期时间选择器'
-  },
+  }
 ]
 
 export default Date

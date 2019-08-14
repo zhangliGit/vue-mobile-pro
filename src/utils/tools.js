@@ -4,7 +4,15 @@
 import Vue from 'vue'
 const vm = new Vue({})
 const tools = {
-// 延迟处理方法
+  // 时间转化
+  gmtToDate (t) {
+    let d = new Date(t)
+    const date = d.getFullYear() + '/' + ((d.getMonth() + 1) > 9 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)) + '/' + (d.getDate() > 9 ? d.getDate() : '0' + d.getDate()) + ' ' +
+      (d.getHours() > 9 ? d.getHours() : '0' + d.getHours()) + ':' + (d.getMinutes() > 9 ? d.getMinutes() : '0' +
+        d.getMinutes())
+    return date
+  },
+  // 延迟处理方法
   goNext: fn => {
     setTimeout(() => {
       fn()

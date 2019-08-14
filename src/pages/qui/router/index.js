@@ -3,13 +3,19 @@ import Router from 'vue-router'
 import Home from './home'
 import Toast from './toast'
 import Scroll from './scroll'
+import DateTime from './date'
+import Form from './form'
+import Data from './data'
 /**
  * @des 路由界面统计
  */
 const RouterPage = [
   ...Home,
   ...Toast,
-  ...Scroll
+  ...Scroll,
+  ...DateTime,
+  ...Form,
+  ...Data
 ]
 
 /**

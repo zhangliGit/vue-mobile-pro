@@ -11,7 +11,7 @@ const Form = [
     module: 'form',
     path: 'SubmitForm',
     title: '表单提交'
-  },
+  }
 ]
 
 export default Form
