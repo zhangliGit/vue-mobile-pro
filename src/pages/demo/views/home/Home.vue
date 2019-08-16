@@ -1,9 +1,11 @@
 <template>
-  <div class="home qui-page qui-fx-ver">
-    <scroll-list>
-      <div @click="goDetail" class="qui-list qui-bd-b" v-for="list in indexList" :key="list.id">
-        <div class="qui-te2">{{list.title}}</div>
-        <div class="time">{{list.time | setTime(123)}}</div>
+  <div class="home qui-page qui-fx">
+    <scroll-list ref="scrollList">
+      <div>
+        <div @click="goDetail" class="qui-list qui-bd-b" v-for="list in indexList" :key="list.id">
+          <div class="qui-te2">{{list.title}}</div>
+          <div class="time">{{list.time | setTime(123)}}</div>
+        </div>
       </div>
     </scroll-list>
   </div>
@@ -35,7 +37,11 @@ export default {
     }
   },
   mounted () {
-    this.getIndex()
+    this.getIndex().then(() => {
+      this.$nextTick(() => {
+        this.$refs.scrollList.refresh()
+      })
+    })
   }
 }
 </script>

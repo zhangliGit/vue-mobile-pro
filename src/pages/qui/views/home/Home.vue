@@ -12,7 +12,8 @@
       <div class="qui-fx-f1 menu-list">
         <ul>
           <li @click="goDemo(list.path, list.title)" class="qui-fx-jsb qui-fx-ac qui-bd-b" v-for="(list, index) in menuList[currentIndex]" :key="index">
-            <div>{{ list.title }}</div>
+            <div class="qui-fx-f1">{{ list.title }}</div>
+            <div style="font-size: 12px; color:#666;marign-right: 4px">{{ list.author }}</div>
             <img src="../../assets/img/right.png" class="rit-img" />
           </li>
         </ul>

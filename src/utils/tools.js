@@ -26,6 +26,13 @@ const tools = {
     }).then(() => {
       if (fn) fn()
     }).catch(() => {})
+  },
+  // 数据加载完毕
+  loadEnd () {
+    vm.$toast({
+      message: '数据已加载完毕',
+      position: 'bottom'
+    })
   }
 }
 

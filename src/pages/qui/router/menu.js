@@ -9,7 +9,8 @@
 const Menu = [{
   module: 'menu',
   path: 'TabBar',
-  title: '顶部Tab菜单栏'
+  title: '顶部Tab菜单栏',
+  author: '张立'
 }]
 
 export default Menu

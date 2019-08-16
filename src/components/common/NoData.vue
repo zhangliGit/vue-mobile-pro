@@ -14,7 +14,7 @@ export default {
   props: {
     msg: {
       type: String,
-      default: '暂无数据'
+      default: ''
     }
   },
   data () {
@@ -34,8 +34,8 @@ export default {
       font-size: 100px;
     }
     .no-data-img {
-      width: 68px;
-      height: 68px;
+      width: 387px;
+      height: 278px;
       display: block
     }
     p {

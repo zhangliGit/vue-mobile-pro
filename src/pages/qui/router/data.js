@@ -10,7 +10,8 @@ const Data = [
   {
     module: 'data',
     path: 'NoData',
-    title: '暂无数据'
+    title: '暂无数据',
+    author: '张立'
   }
 ]
 
