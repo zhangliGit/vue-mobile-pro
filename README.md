@@ -52,3 +52,9 @@ export default hostEnv
 > npm run build main
 
 ```
+
+#### qui组件发布
+
+```
+npm run qui
+```
