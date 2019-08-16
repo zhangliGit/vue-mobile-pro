@@ -21,6 +21,11 @@ const Toast = [
     module: 'toast',
     path: 'ActionSheet',
     title: '底部弹出菜单'
+  },
+  {
+    module: 'toast',
+    path: 'MultiMenu',
+    title: '底部多级滑动菜单'
   }
 ]
 

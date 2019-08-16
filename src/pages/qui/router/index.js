@@ -6,6 +6,8 @@ import Scroll from './scroll'
 import DateTime from './date'
 import Form from './form'
 import Data from './data'
+import Upload from './upload'
+import Menu from './menu'
 /**
  * @des 路由界面统计
  */
@@ -15,7 +17,9 @@ const RouterPage = [
   ...Scroll,
   ...DateTime,
   ...Form,
-  ...Data
+  ...Data,
+  ...Upload,
+  ...Menu
 ]
 
 /**

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "qui": "node update.js",
+    "upload": "node upload.js",
     "dev": "vue-cli-service serve --open",
     "dev-test": "vue-cli-service serve --open --mode dev-test",
     "dev-prod": "vue-cli-service serve --open --mode dev-prod",

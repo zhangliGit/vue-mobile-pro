@@ -84,7 +84,7 @@ export default {
     background:rgba(0,0,0,.5)
   }
   .popup-info {
-    border-radius: @radius;
+    overflow: hidden;
     background-color:#fff;
   }
   .action-btn {

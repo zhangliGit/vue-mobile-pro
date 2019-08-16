@@ -6,7 +6,7 @@
         <img :src="item.url" alt="">
       </div>
     </div>
-    <van-uploader :after-read="afterRead" v-if="fileList.length < 3">
+    <van-uploader :after-read="afterRead" v-if="fileList.length < maxNum">
       <div icon="photo" class="add-file">+</div>
     </van-uploader>
   </div>
@@ -19,6 +19,10 @@ export default {
     [Uploader.name]: Uploader
   },
   props: {
+    maxNum: {
+      type: Number,
+      default: 3
+    },
     value: {
       type: Array,
       default: () => {

@@ -24,8 +24,10 @@
 import Toast from '../../router/toast.js'
 import Scroll from '../../router/scroll.js'
 import DateTime from '../../router/date.js'
+import Menu from '../../router/menu.js'
 import Data from '../../router/data.js'
 import Form from '../../router/form.js'
+import Upload from '../../router/upload.js'
 import HeaderCom from '../../component/HeaderCom'
 export default {
   name: 'Home',
@@ -38,12 +40,14 @@ export default {
         '弹出层',
         '滑动滚动',
         '日历日期',
+        '菜单栏',
         '表单',
-        '数据'
+        '数据',
+        '文件上传'
       ],
       title: 'Qui组件',
       currentIndex: 0,
-      menuList: [Toast, Scroll, DateTime, Form, Data]
+      menuList: [Toast, Scroll, DateTime, Menu, Form, Data, Upload]
     }
   },
   methods: {

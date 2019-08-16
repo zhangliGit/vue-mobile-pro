@@ -1,5 +1,7 @@
 <template>
   <div class="qui-fx-f1 qui-fx-ver">
+    <select-data title="身份类型" :select-list="typeList" v-model="typeTag" @confirm="chooseType"></select-data>
+    <date-time v-model="timeTag" @get-date = 'getDate'></date-time>
     <div class="submit-form qui-fx-f1">
       <div class="submit-item qui-fx-ac qui-bd-b">
         <div class="tip">姓名</div>
@@ -16,7 +18,7 @@
       <div class="mar-t20">
         <div class="submit-item qui-fx-ac qui-bd-b">
           <div class="tip">身份类型</div>
-          <div class="submit-input qui-tx-r qui-fx-f1">
+          <div class="submit-input qui-tx-r qui-fx-f1" @click="typeTag = true">
             {{ dataForm.type }}
           </div>
           <div class="rit-icon"></div>
@@ -25,14 +27,14 @@
       <div class="mar-t20">
         <div class="submit-item qui-fx-ac qui-bd-b">
           <div class="tip">开始日期</div>
-          <div class="submit-input qui-tx-r qui-fx-f1">
+          <div class="submit-input qui-tx-r qui-fx-f1" @click="showDate('startTime')">
             {{ dataForm.startTime }}
           </div>
           <div class="rit-icon"></div>
         </div>
         <div class="submit-item qui-fx-ac qui-bd-b">
           <div class="tip">结束日期</div>
-          <div class="submit-input qui-tx-r qui-fx-f1">
+          <div class="submit-input qui-tx-r qui-fx-f1"  @click="showDate('endTime')">
             {{ dataForm.endTime }}
           </div>
           <div class="rit-icon"></div>
@@ -61,6 +63,8 @@
 </template>
 <script>
 import UploadFile from '@c/common/UploadFile'
+import SelectData from '@c/common/SelectData'
+import DateTime from '@c/common/DateTime'
 import validateForm from '@u/validate'
 const yzForm = {
   sex: '请输入姓名',
@@ -72,7 +76,9 @@ const yzForm = {
 export default {
   name: 'SubmitForm',
   components: {
-    UploadFile
+    UploadFile,
+    SelectData,
+    DateTime
   },
   props: {
   },
@@ -80,6 +86,22 @@ export default {
   },
   data () {
     return {
+      typeTag: false,
+      timeTag: false,
+      typeList: [
+        {
+          id: 1,
+          text: '身份证'
+        },
+        {
+          id: 2,
+          text: '驾驶证'
+        },
+        {
+          id: 3,
+          text: '港澳通行证'
+        }
+      ],
       dataForm: {
         sex: '',
         address: '',
@@ -93,8 +115,21 @@ export default {
   methods: {
     submitForm () {
       validateForm(yzForm, this.dataForm, () => {
-        console.log(2)
       })
+    },
+    // 选择身份
+    chooseType (item) {
+      this.dataForm.type = item.text
+    },
+    // 展示日期框
+    showDate (type) {
+      this.timeTag = true
+      this.timeType = type
+    },
+    // 获取日期
+    getDate (time) {
+      this.timeTag = false
+      this.dataForm[this.timeType] = time
     }
   }
 }
