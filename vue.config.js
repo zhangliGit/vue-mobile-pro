@@ -1,5 +1,6 @@
 const path = require('path')
 const utils = require('./build/tool')
+const customTheme = require('./vant-custom-theme')
 const resolve = dir => path.join(__dirname, dir)
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const isProduction = process.env.NODE_ENV === 'production'
@@ -15,7 +16,6 @@ module.exports = {
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
     // 添加别名
     config.resolve.alias
-      config.resolve.alias
       .set('@s', resolve('src'))
       .set('@p', resolve('src/pages'))
       .set('@a', resolve('src/assets'))
@@ -46,6 +46,13 @@ module.exports = {
           }
         })
       ]
+    }
+  },
+  css: {
+    loaderOptions: {
+      less: {
+        modifyVars: customTheme.theme
+      }
     }
   },
   // 本地访问代理

@@ -2,9 +2,8 @@
   <div class="home qui-page qui-fx">
     <scroll-list ref="scrollList">
       <div>
-        <div @click="goDetail" class="qui-list qui-bd-b" v-for="list in indexList" :key="list.id">
+        <div @click="goDetail" class="qui-list qui-bd-b" v-for="list in dataList" :key="list.id">
           <div class="qui-te2">{{list.title}}</div>
-          <div class="time">{{list.time | setTime(123)}}</div>
         </div>
       </div>
     </scroll-list>
@@ -12,7 +11,8 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
+import device from '../device'
 import ScrollList from '@c/common/ScrollList'
 export default {
   name: 'Home',
@@ -25,23 +25,28 @@ export default {
   },
   computed: {
     ...mapState('home', [
-      'indexList'
+      'dataList'
     ])
   },
   methods: {
     ...mapActions('home', [
       'getIndex'
     ]),
+    ...mapMutations('home', [
+      'updateData'
+    ]),
     goDetail () {
       this.$router.push('/detail')
     }
   },
   mounted () {
-    this.getIndex().then(() => {
-      this.$nextTick(() => {
-        this.$refs.scrollList.refresh()
-      })
-    })
+    // 手机信息
+    const dpr = window.devicePixelRatio
+    const w = document.documentElement.clientWidth
+    const h = document.documentElement.clientHeight
+    alert(dpr + '--' + w + '--' + h)
+    alert(device.getGlRenderer())
+    alert(device.getModels())
   }
 }
 </script>

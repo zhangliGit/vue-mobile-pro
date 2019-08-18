@@ -11,7 +11,7 @@ if (ConfigEnv === 'test') {
 } else if (ConfigEnv === 'prod') {
   hostEnv = 'http://prod'
 } else {
-  hostEnv = 'http://192.168.2.247:3000/mock/40'
+  hostEnv = ''
 }
 
 export default hostEnv

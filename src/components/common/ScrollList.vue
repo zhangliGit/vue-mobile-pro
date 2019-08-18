@@ -54,7 +54,7 @@ export default {
         // 处理列表不操作，在返回到列表页时滚动卡死
         this.scroll.scrollTo(0, 1)
         this.scroll.on('pullingUp', () => {
-          this.$emit('loadMore')
+          this.$emit('loadMore', true)
         })
       }
     })

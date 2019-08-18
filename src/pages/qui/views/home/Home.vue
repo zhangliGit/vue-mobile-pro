@@ -30,6 +30,7 @@ import Data from '../../router/data.js'
 import Form from '../../router/form.js'
 import Upload from '../../router/upload.js'
 import HeaderCom from '../../component/HeaderCom'
+
 export default {
   name: 'Home',
   components: {
