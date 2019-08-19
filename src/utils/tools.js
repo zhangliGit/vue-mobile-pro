@@ -28,7 +28,7 @@ const tools = {
     }).catch(() => {})
   },
   // 列表数据加载(分页)
-  loadMoreData (type, fn, params, data) {
+  loadMoreData (type, fn, params, data, cb) {
     if (type) {
       if (!this.isNextPage) {
         this.$toast({
@@ -53,6 +53,7 @@ const tools = {
       this.isNextPage = res.hasNextPage
       this.$nextTick(() => {
         this.$refs.scrollList.refresh()
+        if (cb) cb()
       })
     })
   },
