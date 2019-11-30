@@ -1,6 +1,6 @@
 <template>
   <div :class="'qui-fx-f1 qui-of scroll-list ' + className" ref="wrapper">
-    <div>
+    <div :class="{'scroll-padd': isPadd}">
       <slot></slot>
     </div>
   </div>
@@ -11,6 +11,10 @@ import BScroll from 'better-scroll'
 export default {
   name: 'ScrollList',
   props: {
+    isPadd: {
+       type: Boolean,
+       default: false
+    },
     pullUpLoad: {
       type: Boolean,
       default: false
@@ -52,7 +56,7 @@ export default {
         })
         this.scroll.refresh()
         // 处理列表不操作，在返回到列表页时滚动卡死
-        this.scroll.scrollTo(0, 1)
+        this.scroll.scrollTo(0, -1)
         this.scroll.on('pullingUp', () => {
           this.$emit('loadMore', true)
         })
@@ -64,5 +68,9 @@ export default {
 <style lang="less" scoped>
   .scroll-list {
     position: relative;
+  }
+  .scroll-padd {
+    padding-top: 20px;
+    padding-bottom: 2px;
   }
 </style>

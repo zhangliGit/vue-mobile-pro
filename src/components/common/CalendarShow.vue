@@ -301,6 +301,7 @@ export default {
         document.getElementById('calendar').style.height = 3.2 * this.sortDate.length + 'rem'
       }
       this.isOpen = !this.isOpen
+      this.$emit('toggle')
     },
     changeDate (day) {
       this.currentDate = day.date

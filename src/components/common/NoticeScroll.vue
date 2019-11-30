@@ -66,9 +66,6 @@ export default {
     ul {
       transition: all 1s linear;
       width: 100%;
-      li {
-        text-indent: 20px;
-      }
     }
   }
 </style>

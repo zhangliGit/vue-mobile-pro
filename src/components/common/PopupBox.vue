@@ -1,6 +1,10 @@
 <template>
   <div v-if="popupTag" class="popup-dialog qui-fx-ver" >
     <div class="popup-info qui-fx-ver" :style="{borderRadius: isRadius ? '4px' : 0, width: width + '%', height: height + '%', left: (100 - width) / 2 + '%', top: isCustom ? (100 - height) / 4 + '%' : (100 - height) / 2 + '%'}">
+<<<<<<< HEAD
+=======
+      <slot name="title"></slot>
+>>>>>>> master
       <scroll-list ref="scrollList">
         <slot></slot>
       </scroll-list>

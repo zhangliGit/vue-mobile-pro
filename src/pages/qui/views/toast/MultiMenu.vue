@@ -54,7 +54,11 @@ export default {
                 },
                 {
                   id: 1.22,
+<<<<<<< HEAD
                   title: '非传染传染'
+=======
+                  title: '非传染'
+>>>>>>> master
                 }
               ]
             }

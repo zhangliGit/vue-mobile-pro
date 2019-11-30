@@ -1,5 +1,10 @@
+const utils = require('./build/utils')
 const path = require('path')
+<<<<<<< HEAD
 const utils = require('./build/tool')
+=======
+const glob = require('glob')
+>>>>>>> master
 const customTheme = require('./vant-custom-theme')
 const resolve = dir => path.join(__dirname, dir)
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -32,20 +37,27 @@ module.exports = {
         vuex: 'Vuex',
         axios: 'axios'
       }
-    }
-    // 去除调试信息
-    config.optimization = {
-      minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            compress: {
-              drop_console: true,
-              drop_debugger: true,
-              pure_funcs: ['console.log']
+      // 压缩代码
+      config.optimization = {
+        minimizer: [
+          new UglifyJsPlugin({
+            uglifyOptions: {
+              compress: {
+                drop_console: true
+              }
             }
-          }
-        })
-      ]
+          })
+        ]
+      }
+    }
+  },
+  css: {
+    extract: true,
+    sourceMap: false,
+    loaderOptions: {
+      less: {
+        modifyVars: customTheme.theme
+      }
     }
   },
   css: {

@@ -1,6 +1,9 @@
 <template>
   <div class="qui-page qui-fx-ver">
     <popup-box v-model="isShow" @confirm="isShow = false" :cancel-text="'取消'" width="80" height="80">
+      <div slot="title" style="padding: 10px; text-align:center">
+        我是头部标题
+      </div>
       <div class="info-list">
          <div style="height: 2rem; line-height: 2rem;" class="qui-bd-b" v-for="i in 20" :key="i">
            {{ i }}

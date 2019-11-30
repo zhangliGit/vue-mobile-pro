@@ -1,29 +1,26 @@
 <template>
   <div class="detail">
-    {{detail.content}}
+    详情界面
+    {{count}}
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { store } from './store'
 export default {
   name: 'Detail',
   data () {
     return {
-      detail: {}
     }
   },
-  watch: {
+  computed: {
+    count () {
+      return store.count
+    }
   },
   methods: {
-    ...mapActions('home', [
-      'getDetail'
-    ])
   },
   mounted () {
-    this.getDetail().then(res => {
-      this.detail = res.data
-    })
   }
 }
 </script>

@@ -29,6 +29,8 @@ import Menu from '../../router/menu.js'
 import Data from '../../router/data.js'
 import Form from '../../router/form.js'
 import Upload from '../../router/upload.js'
+import Echarts from '../../router/echarts.js'
+import Collapse from '../../router/collapse.js'
 import HeaderCom from '../../component/HeaderCom'
 
 export default {
@@ -45,11 +47,13 @@ export default {
         '菜单栏',
         '表单',
         '数据',
-        '文件上传'
+        '文件上传',
+        '图表',
+        '折叠面板'
       ],
       title: 'Qui组件',
       currentIndex: 0,
-      menuList: [Toast, Scroll, DateTime, Menu, Form, Data, Upload]
+      menuList: [Toast, Scroll, DateTime, Menu, Form, Data, Upload, Echarts, Collapse]
     }
   },
   methods: {

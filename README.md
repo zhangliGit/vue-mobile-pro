@@ -39,7 +39,7 @@ export default hostEnv
 
 > npm run build-test // 打包测试环境
 
-> npm run build-prod // 打包正式环境 
+> npm run build-prod // 打包正式环境
 ```
 
 > 打包时要分模块打包, 单独打包每个模块, 只需要传入模块文件名即可, 否则会打包所有模块
