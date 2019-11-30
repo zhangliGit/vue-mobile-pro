@@ -19,7 +19,7 @@ let total = 1
 let time = setInterval(() => {
   console.log(total++)
 }, 1000)
-var url = 'http://192.168.2.247:8090/upload'
+var url = 'http://192.168.2.247:8090/upload-web'
 var formData = {
   file: fs.createReadStream(path.resolve(__dirname, 'qui-component.zip'))
 }

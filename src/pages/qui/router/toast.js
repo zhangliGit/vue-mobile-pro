@@ -10,22 +10,26 @@ const Toast = [
   {
     module: 'toast',
     path: 'PopupBox',
-    title: '弹出层信息展示'
+    title: '弹出层信息展示',
+    author: '张立'
   },
   {
     module: 'toast',
     path: 'SelectData',
-    title: '底部选择框'
+    title: '底部选择框',
+    author: '张立'
   },
   {
     module: 'toast',
     path: 'ActionSheet',
-    title: '底部弹出菜单'
+    title: '底部弹出菜单',
+    author: '张立'
   },
   {
     module: 'toast',
     path: 'MultiMenu',
-    title: '底部多级滑动菜单'
+    title: '底部多级滑动菜单',
+    author: '张立'
   }
 ]
 

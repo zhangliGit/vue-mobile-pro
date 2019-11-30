@@ -1,5 +1,7 @@
+const utils = require('./build/utils')
 const path = require('path')
-const utils = require('./build/tool')
+const glob = require('glob')
+const customTheme = require('./vant-custom-theme')
 const resolve = dir => path.join(__dirname, dir)
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const isProduction = process.env.NODE_ENV === 'production'
@@ -15,7 +17,6 @@ module.exports = {
     types.forEach(type => addStyleResource(config.module.rule('less').oneOf(type)))
     // 添加别名
     config.resolve.alias
-      config.resolve.alias
       .set('@s', resolve('src'))
       .set('@p', resolve('src/pages'))
       .set('@a', resolve('src/assets'))
@@ -32,20 +33,27 @@ module.exports = {
         vuex: 'Vuex',
         axios: 'axios'
       }
-    }
-    // 去除调试信息
-    config.optimization = {
-      minimizer: [
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            compress: {
-              drop_console: true,
-              drop_debugger: true,
-              pure_funcs: ['console.log']
+      // 压缩代码
+      config.optimization = {
+        minimizer: [
+          new UglifyJsPlugin({
+            uglifyOptions: {
+              compress: {
+                drop_console: true
+              }
             }
-          }
-        })
-      ]
+          })
+        ]
+      }
+    }
+  },
+  css: {
+    extract: true,
+    sourceMap: false,
+    loaderOptions: {
+      less: {
+        modifyVars: customTheme.theme
+      }
     }
   },
   // 本地访问代理

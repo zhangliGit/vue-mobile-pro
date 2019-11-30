@@ -8,6 +8,8 @@ import Form from './form'
 import Data from './data'
 import Upload from './upload'
 import Menu from './menu'
+import Echarts from './echarts'
+import Collapse from './collapse'
 /**
  * @des 路由界面统计
  */
@@ -19,7 +21,9 @@ const RouterPage = [
   ...Form,
   ...Data,
   ...Upload,
-  ...Menu
+  ...Menu,
+  ...Echarts,
+  ...Collapse
 ]
 
 /**

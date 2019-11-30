@@ -43,9 +43,17 @@ for (const key in apiList) {
     return resultBack(res)
   }
 }
-const home = {
+/**
+ * @description 本地存储值，以模块为单位存储，避免模块之间的存储冲突
+ */
+const localData = window.localStorage.getItem('home') || '{}'
+const getState = (state, val) => {
+  return JSON.parse(localData)[state] || val
+}
+const qui = {
   namespaced: true,
   state: {
+    dataList: getState('dataList', [])
   },
   actions: {
     ...actions
@@ -56,8 +64,17 @@ const home = {
      * @param { key } state属性
      * @param { data } 存在的数据
      */
-    setData (state, data) {
-      state[data.key] = data.data
+    updateData (state, {
+      key,
+      data,
+      isLocal = true
+    }) {
+      if (isLocal) {
+        const quiData = JSON.parse(localStorage.getItem('qui') || '{}')
+        quiData[key] = data
+        window.localStorage.setItem('qui', JSON.stringify(quiData))
+      }
+      state[key] = data
     }
   }
 }
@@ -73,11 +90,7 @@ const setVuex = function ({
   commit
 }, path, res) {
   if (path === 'getIndex') {
-    commit('setData', {
-      key: 'indexList',
-      data: res.data
-    })
   }
 }
 
-export default home
+export default qui

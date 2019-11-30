@@ -12,7 +12,8 @@ const Home = [
     path: 'Home',
     type: 'index',
     keepAlive: true,
-    title: '首页'
+    title: '首页',
+    author: '张立'
   }
 ]
 

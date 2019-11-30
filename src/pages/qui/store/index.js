@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import home from './module/home'
+import qui from './module/home'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
-    home
+    qui
   },
   state: {}
 })

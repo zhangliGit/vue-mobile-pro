@@ -13,7 +13,9 @@ import {
   Picker,
   Popup,
   ActionSheet,
-  DatetimePicker
+  DatetimePicker,
+  Collapse,
+  CollapseItem
 } from 'vant'
 
 Vue.use(Dialog)
@@ -25,3 +27,5 @@ Vue.use(Picker)
 Vue.use(Popup)
 Vue.use(ActionSheet)
 Vue.use(DatetimePicker)
+Vue.use(Collapse)
+Vue.use(CollapseItem)

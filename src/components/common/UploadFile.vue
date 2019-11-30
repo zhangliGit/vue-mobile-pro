@@ -3,7 +3,7 @@
     <div class="qui-fx">
       <div class="pic-user qui-fx-ac-jc" @click="delFile(index)" v-for="(item, index) in fileList" :key="item.id" >
         <div class="del-icon"></div>
-        <img :src="item.url" alt="">
+        <img :src="item.url" alt="" id="iosphoto">
       </div>
     </div>
     <van-uploader :after-read="afterRead" v-if="fileList.length < maxNum">
@@ -12,6 +12,7 @@
   </div>
 </template>
 <script>
+import EXIF from 'exif-js'
 import { Uploader } from 'vant'
 export default {
   name: 'UploadFile',
@@ -23,6 +24,18 @@ export default {
       type: Number,
       default: 3
     },
+    isCompress: {
+      type: Boolean,
+      default: false
+    },
+    width: {
+      type: Number,
+      default: 640
+    },
+    height: {
+      type: Number,
+      default: 960
+    },
     value: {
       type: Array,
       default: () => {
@@ -31,26 +44,89 @@ export default {
     }
   },
   computed: {
+    fileList: {
+      get () {
+        return this.value
+      },
+      set (val) {
+        this.$emit('input', val)
+      }
+    }
   },
   data () {
     return {
-      fileList: []
-    }
-  },
-  methods: {
-    afterRead (file) {
-      this.fileList.push({
-        id: Math.floor(Math.random() * 1000000),
-        url: file.content
-      })
-      this.$emit('input', this.fileList.map(item => item.url))
-    },
-    delFile (index) {
-      this.fileList.splice(index, 1)
-      this.$emit('input', this.fileList.map(item => item.url))
+      Orientation: null
     }
   },
   mounted () {
+  },
+  methods: {
+    afterRead (file) {
+      if (!this.isCompress) {
+        this.fileList.push({
+          id: Math.floor(Math.random() * 1000000),
+          url: file.content
+        })
+        return
+      }
+      let img = new Image()
+      img.src = file.content
+      let that = this
+      img.onload = function () {
+        EXIF.getData(this, function () {
+          that.Orientation = EXIF.getTag(this, 'Orientation')
+          that.ctxWidth = that.width
+          that.ctxHeight = that.height
+          that.ontpys(img)
+        })
+      }
+    },
+    delFile (index) {
+      this.fileList.splice(index, 1)
+    },
+    // 压缩图片的方法
+    ontpys (img) {
+      let quality = 0.6 // 压缩质量
+      let canvas = document.createElement('canvas')
+      let drawer = canvas.getContext('2d')
+      canvas.width = this.ctxWidth
+      canvas.height = this.ctxHeight
+      if ([5, 6, 7, 8].includes(this.Orientation)) {
+        canvas.width = this.ctxHeight
+        canvas.height = this.ctxWidth
+      }
+      switch (this.Orientation) {
+      case 2:
+        drawer.transform(-1, 0, 0, 1, this.ctxWidth, 0)
+        break
+      case 3:
+        drawer.transform(-1, 0, 0, -1, this.ctxWidth, this.ctxHeight)
+        break
+      case 4:
+        drawer.transform(1, 0, 0, -1, 0, this.ctxHeight)
+        break
+      case 5:
+        drawer.transform(0, 1, 1, 0, 0, 0)
+        break
+      case 6:
+        drawer.transform(0, 1, -1, 0, this.ctxHeight, 0)
+        break
+      case 7:
+        drawer.transform(0, -1, -1, 0, this.ctxHeight, this.ctxWidth)
+        break
+      case 8:
+        drawer.transform(0, -1, 1, 0, 0, this.ctxWidth)
+        break
+      default:
+        drawer.transform(1, 0, 0, 1, 0, 0)
+      }
+      drawer.drawImage(img, 0, 0, this.ctxWidth, this.ctxHeight)
+      let base64 = canvas.toDataURL('image/jpeg', quality)
+      this.fileList.push({
+        id: Math.floor(Math.random() * 1000000),
+        url: base64
+      })
+    }
   }
 }
 </script>

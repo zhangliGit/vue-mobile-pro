@@ -9,7 +9,8 @@
 const Upload = [{
   module: 'upload',
   path: 'UploadFile',
-  title: '图片上传'
+  title: '图片上传',
+  author: '张立'
 }]
 
 export default Upload

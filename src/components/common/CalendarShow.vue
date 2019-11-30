@@ -28,6 +28,11 @@
           </span>
         </div>
       </div>
+      <div v-if="isToggle" class="down-icon qui-fx-ac qui-fx-jc" @click="toogleCal">
+        <div :style="{transform: downStyle}">
+          <img src="./img/down-icon.png" alt="">
+        </div>
+      </div>
     </div>
 </template>
 
@@ -50,12 +55,19 @@
     background-color:#7b91f4
   }
   .calendar-box {
-    min-height: 300px;
   }
   .calendar-box i {
     font-style: normal;
   }
-
+  .down-icon {
+    height: 50px;
+    background-color:#eee;
+    img {
+      width: 26px;
+      height: 26px;
+      display: block
+    }
+  }
   .calendar-header {
     height: 80px;
     display: flex;
@@ -187,6 +199,7 @@ export default {
     var newd = new Date()
     return {
       dateShow: this.isDate,
+      downStyle: 'rotate(180deg)',
       isOpen: true,
       // -> 标志日历的当前显示
       currentYear: newd.getFullYear(),
@@ -200,6 +213,10 @@ export default {
     }
   },
   props: {
+    isToggle: {
+      type: Boolean,
+      default: true
+    },
     isDate: {
       type: Array,
       default: function () {
@@ -277,11 +294,14 @@ export default {
     },
     toogleCal () {
       if (this.isOpen) {
+        this.downStyle = 'rotate(0deg)'
         document.getElementById('calendar').style.height = '3.2rem'
       } else {
+        this.downStyle = 'rotate(180deg)'
         document.getElementById('calendar').style.height = 3.2 * this.sortDate.length + 'rem'
       }
       this.isOpen = !this.isOpen
+      this.$emit('toggle')
     },
     changeDate (day) {
       this.currentDate = day.date

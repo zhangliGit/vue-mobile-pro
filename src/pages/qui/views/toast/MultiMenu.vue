@@ -1,10 +1,11 @@
 <template>
   <div class='mutil-menu qui-page qui-fx-ver'>
-    <multi-menu title='请假类型' :action-list='actionList' v-model='isShow' @select='select'></multi-menu>
     <header-com isBack :title='$route.query.title'></header-com>
     <div class='select-list qui-fx-ac qui-fx-jsb qui-bd-b'>
       <div>请假类型：</div>
-      <div @click='isShow = true' class='qui-fx-f1 qui-tx-r' style='color:#666'>{{ type }}</div>
+      <div @click='isShow = true' class='qui-fx-f1 qui-tx-r' style='color:#666'>
+        <multi-menu title='请假类型' :select-list='selectList' v-model='selectValue'></multi-menu>
+      </div>
       <div class='rit-icon'></div>
     </div>
   </div>
@@ -23,25 +24,55 @@ export default {
     return {
       isShow: false,
       type: '请选择',
-      actionList: [
+      selectValue: [],
+      selectList: [
         {
-          'code': 'ZX13sogn6rpjknq',
-          'name': '婚假',
-          'pCode': '',
-          'systemCode': 'CSKQ',
-          'children': [{
-            'children': null,
-            'code': 'ZX13u3x3q89tdlu',
-            'name': '新婚假',
-            'pCode': 'ZX13sogn6rpjknq',
-            'systemCode': 'CSKQ'
-          }, {
-            'children': null,
-            'code': 'ZX13u3x42cxkdnm',
-            'name': '晚婚假',
-            'pCode': 'ZX13sogn6rpjknq',
-            'systemCode': 'CSKQ'
-          }]
+          id: 1,
+          title: '病假',
+          children: [
+            {
+              id: 1.1,
+              title: '感冒',
+              children: [
+                {
+                  id: 1.11,
+                  title: '传染'
+                },
+                {
+                  id: 1.12,
+                  title: '非传染传染'
+                }
+              ]
+            },
+            {
+              id: 1.2,
+              title: '肚子痛',
+              children: [
+                {
+                  id: 1.21,
+                  title: '传染'
+                },
+                {
+                  id: 1.22,
+                  title: '非传染'
+                }
+              ]
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: '事假',
+          children: [
+            {
+              id: 1.1,
+              title: '孩子生病'
+            },
+            {
+              id: 1.2,
+              title: '出差办事'
+            }
+          ]
         }
       ]
     }

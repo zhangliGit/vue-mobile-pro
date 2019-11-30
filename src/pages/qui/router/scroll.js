@@ -10,17 +10,20 @@ const Scroll = [
   {
     module: 'scroll',
     path: 'ScrollList',
-    title: '上下滚动'
+    title: '上下滚动',
+    author: '张立'
   },
   {
     module: 'scroll',
     path: 'LevelScroll',
-    title: '左右区域滚动'
+    title: '左右区域滚动',
+    author: '张立'
   },
   {
     module: 'scroll',
     path: 'NoticeScroll',
-    title: '通知滚动'
+    title: '通知滚动',
+    author: '张立'
   }
 ]
 
