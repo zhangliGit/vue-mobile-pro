@@ -9,9 +9,9 @@ let hostEnv = ''
 if (ConfigEnv === 'test') {
   hostEnv = 'http://test'
 } else if (ConfigEnv === 'prod') {
-  hostEnv = 'http://prod'
+  hostEnv = 'http://39.97.246.227:8090'
 } else {
-  hostEnv = ''
+  hostEnv = '/order'
 }
 
 export default hostEnv

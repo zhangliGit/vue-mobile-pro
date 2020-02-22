@@ -70,23 +70,22 @@ module.exports = {
     https: false,
     hotOnly: false,
     proxy: {
-      '/api': {
-        target: 'http://xiaoyueyue.com.cn:3000',
+      '/order': {
+        target: 'http://39.97.246.227:8090',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          '^/api': ''
+          '^/order': ''
         }
       }
     }
   }
 }
-function addStyleResource (rule) {
-  rule.use('style-resource')
+function addStyleResource(rule) {
+  rule
+    .use('style-resource')
     .loader('style-resources-loader')
     .options({
-      patterns: [
-        path.resolve(__dirname, 'src/assets/css/variables.less')
-      ]
+      patterns: [path.resolve(__dirname, 'src/assets/css/variables.less')]
     })
 }

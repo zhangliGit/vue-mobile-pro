@@ -1,12 +1,12 @@
 <template>
-  <div class='mutil-menu qui-page qui-fx-ver'>
-    <header-com isBack :title='$route.query.title'></header-com>
-    <div class='select-list qui-fx-ac qui-fx-jsb qui-bd-b'>
+  <div class="mutil-menu qui-page qui-fx-ver">
+    <header-com isBack :title="$route.query.title"></header-com>
+    <div class="select-list qui-fx-ac qui-fx-jsb qui-bd-b">
       <div>请假类型：</div>
-      <div @click='isShow = true' class='qui-fx-f1 qui-tx-r' style='color:#666'>
-        <multi-menu title='请假类型' :select-list='selectList' v-model='selectValue'></multi-menu>
+      <div @click="isShow = true" class="qui-fx-f1 qui-tx-r" style="color:#666">
+        <multi-menu title="请假类型" :select-list="selectList" v-model="selectValue"></multi-menu>
       </div>
-      <div class='rit-icon'></div>
+      <div class="rit-icon"></div>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     MultiMenu,
     HeaderCom
   },
-  data () {
+  data() {
     return {
       isShow: false,
       type: '请选择',
@@ -54,11 +54,7 @@ export default {
                 },
                 {
                   id: 1.22,
-<<<<<<< HEAD
-                  title: '非传染传染'
-=======
                   title: '非传染'
->>>>>>> master
                 }
               ]
             }
@@ -82,17 +78,16 @@ export default {
     }
   },
   methods: {
-    select (item) {
+    select(item) {
       this.type = item.name
     }
   }
 }
 </script>
 
-<style lang='less' scoped>
-  .select-list {
-    background-color:#fff;
-    padding: 30px 20px;
-  }
+<style lang="less" scoped>
+.select-list {
+  background-color: #fff;
+  padding: 30px 20px;
+}
 </style>
-

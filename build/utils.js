@@ -5,7 +5,7 @@ const glob = require('glob')
 const modulesDir = glob.sync(pagePath + '/*')
 const buildModule = process.argv[process.argv.length - 1]
 let pageList = []
-modulesDir.forEach((file) => {
+modulesDir.forEach(file => {
   pageList.push(file.split('/')[file.split('/').length - 1])
 })
 
@@ -30,9 +30,9 @@ const cdn = [
   'https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js'
 ]
 // 多页面配置
-exports.entries = function () {
+exports.entries = function() {
   let entries = {}
-  pageList.forEach((pageDir) => {
+  pageList.forEach(pageDir => {
     entries[pageDir] = {
       // 入口文件
       entry: `src/pages/${pageDir}/main.js`,

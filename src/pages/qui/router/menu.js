@@ -6,20 +6,19 @@
  * @author zhangli
  */
 
-const Menu = [{
-  module: 'menu',
-  path: 'TabBar',
-  title: '顶部Tab菜单栏',
-  author: '张立'
-<<<<<<< HEAD
-=======
-},
-{
-  module: 'menu',
-  path: 'DropdownMenu',
-  title: '下拉菜单',
-  author: '贺飞'
->>>>>>> master
-}]
+const Menu = [
+  {
+    module: 'menu',
+    path: 'TabBar',
+    title: '顶部Tab菜单栏',
+    author: '张立'
+  },
+  {
+    module: 'menu',
+    path: 'DropdownMenu',
+    title: '下拉菜单',
+    author: '贺飞'
+  }
+]
 
 export default Menu

@@ -9,20 +9,27 @@ import Vue from 'vue'
 
 // 请求超时时间
 axios.defaults.timeout = 15000
+axios.defaults.withCredentials = true // 让ajax携带cookie
 
 // 拦截请求
-axios.interceptors.request.use(function (config) {
-  return config
-}, function (error) {
-  return Promise.reject(error)
-})
+axios.interceptors.request.use(
+  function(config) {
+    return config
+  },
+  function(error) {
+    return Promise.reject(error)
+  }
+)
 
 // 拦截响应
-axios.interceptors.response.use(function (response) {
-  return response
-}, function (error) {
-  return Promise.reject(error)
-})
+axios.interceptors.response.use(
+  function(response) {
+    return response
+  },
+  function(error) {
+    return Promise.reject(error)
+  }
+)
 
 const showToast = (tip = '') => {
   Vue.prototype.$toast.loading({
@@ -33,7 +40,7 @@ const showToast = (tip = '') => {
 }
 
 // 处理响应结果
-function responseRes (res) {
+function responseRes(res) {
   Vue.prototype.$toast.clear()
   return new Promise((resolve, reject) => {
     if (res.code === 200 || res.status === true) {
@@ -45,7 +52,7 @@ function responseRes (res) {
   })
 }
 const $ajax = {
-  async get (obj, tag = true) {
+  async get(obj, tag = true) {
     if (tag) showToast()
     try {
       let res = await axios.get(obj.url, {
@@ -57,7 +64,7 @@ const $ajax = {
       return responseRes(err.response.data)
     }
   },
-  async postForm (obj, tag = true) {
+  async postForm(obj, tag = true) {
     if (tag) showToast()
     try {
       let res = await axios.post(obj.url, qs.stringify(obj.params))
@@ -67,7 +74,7 @@ const $ajax = {
       return responseRes(err.response.data)
     }
   },
-  async post (obj, tag = true) {
+  async post(obj, tag = true) {
     if (tag) showToast()
     try {
       let res = await axios({
@@ -84,7 +91,7 @@ const $ajax = {
       return responseRes(err.response.data)
     }
   },
-  async postQuery (obj, tag = true) {
+  async postQuery(obj, tag = true) {
     if (tag) showToast()
     try {
       let res = await axios({
@@ -101,7 +108,7 @@ const $ajax = {
       return responseRes(err.response.data)
     }
   },
-  async getWithPara (obj, tag = true) {
+  async getWithPara(obj, tag = true) {
     if (tag) showToast()
     try {
       let res = await axios({

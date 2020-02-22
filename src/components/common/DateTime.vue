@@ -1,11 +1,11 @@
 <template>
   <van-popup position="bottom" v-model="dateTag">
-   <van-datetime-picker
+    <van-datetime-picker
       :title="title"
       :min-date="getMinDate"
       :max-date="getMaxDate"
-      @confirm ="confirm"
-      @cancel ="cancel"
+      @confirm="confirm"
+      @cancel="cancel"
       @change="change"
       v-model="currentDate"
       :type="type"
@@ -43,12 +43,12 @@ export default {
     }
   },
   computed: {
-    getMinDate () {
+    getMinDate() {
       if (!this.minDate) {
         if (this.type === 'time') {
           return '00:00'
         }
-        return new Date((new Date()).getTime() - 1000 * 60 * 60 * 24 * 365 * 10)
+        return new Date(new Date().getTime() - 1000 * 60 * 60 * 24 * 365 * 10)
       } else {
         if (this.type === 'time') {
           return this.minDate
@@ -56,12 +56,12 @@ export default {
         return new Date(this.minDate)
       }
     },
-    getMaxDate () {
+    getMaxDate() {
       if (!this.maxDate) {
         if (this.type === 'time') {
           return '24:00'
         }
-        return new Date((new Date()).getTime() + 1000 * 60 * 60 * 24 * 365 * 10)
+        return new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 365 * 10)
       } else {
         if (this.type === 'time') {
           return this.maxDate
@@ -70,7 +70,7 @@ export default {
       }
     },
     currentDate: {
-      get () {
+      get() {
         if (!this.date) {
           if (this.type === 'time') {
             return '00:00'
@@ -83,29 +83,36 @@ export default {
           return new Date(this.date)
         }
       },
-      set () {}
+      set() {}
     },
     dateTag: {
-      get () {
+      get() {
         return this.value
       },
-      set () {
+      set() {
         this.$emit('input', false)
       }
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   },
   methods: {
-    gmtDate (t) {
+    gmtDate(t) {
       let d = new Date(t)
-      return d.getFullYear() + '/' + ((d.getMonth() + 1) > 9 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)) + '/' + (d.getDate() > 9 ? d.getDate() : '0' + d.getDate()) + ' ' +
-      (d.getHours() > 9 ? d.getHours() : '0' + d.getHours()) + ':' + (d.getMinutes() > 9 ? d.getMinutes() : '0' +
-        d.getMinutes())
+      return (
+        d.getFullYear() +
+        '/' +
+        (d.getMonth() + 1 > 9 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)) +
+        '/' +
+        (d.getDate() > 9 ? d.getDate() : '0' + d.getDate()) +
+        ' ' +
+        (d.getHours() > 9 ? d.getHours() : '0' + d.getHours()) +
+        ':' +
+        (d.getMinutes() > 9 ? d.getMinutes() : '0' + d.getMinutes())
+      )
     },
-    formatter (type, value) {
+    formatter(type, value) {
       if (type === 'year') {
         return `${value}年`
       } else if (type === 'month') {
@@ -119,7 +126,7 @@ export default {
       }
       return value
     },
-    confirm (date) {
+    confirm(date) {
       if (this.type === 'year-month') {
         date = this.gmtDate(date).substring(0, 7)
       } else if (this.type === 'datetime') {
@@ -130,14 +137,11 @@ export default {
       this.$emit('get-date', date)
       this.$emit('input', false)
     },
-    cancel () {
+    cancel() {
       this.$emit('input', false)
     },
-    change () {
-    }
+    change() {}
   }
 }
 </script>
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

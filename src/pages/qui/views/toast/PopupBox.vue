@@ -5,9 +5,9 @@
         我是头部标题
       </div>
       <div class="info-list">
-         <div style="height: 2rem; line-height: 2rem;" class="qui-bd-b" v-for="i in 20" :key="i">
-           {{ i }}
-         </div>
+        <div style="height: 2rem; line-height: 2rem;" class="qui-bd-b" v-for="i in 20" :key="i">
+          {{ i }}
+        </div>
       </div>
     </popup-box>
     <header-com isBack :title="$route.query.title"></header-com>
@@ -26,18 +26,17 @@ export default {
     PopupBox,
     HeaderCom
   },
-  data () {
+  data() {
     return {
       isShow: false
     }
   },
-  mounted () {
-  }
+  mounted() {}
 }
 </script>
 
 <style lang="less" scoped>
-  .info-list {
-    padding: 20px;
-  }
+.info-list {
+  padding: 20px;
+}
 </style>

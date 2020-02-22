@@ -1,28 +1,36 @@
 <template>
   <div class="qui-page qui-fx-ver">
     <div id="header" class="header">
-      <div class="header-slide qui-fx">
-      </div>
-      <div class="co-header-title">{{title}}</div>
+      <div class="header-slide qui-fx"></div>
+      <div class="co-header-title">{{ title }}</div>
       <div class="header-slide qui-fx-je" @click="toogleDemo">
-        <img class="down-img" :src="show" alt="">
+        <img class="down-img" :src="show" alt="" />
       </div>
     </div>
     <div class="fx-f1">
-      <div :class="['qui-fx-wp qui-list qui-bd-b', {'qui-list--toogle': toogle}]">
+      <div :class="['qui-fx-wp qui-list qui-bd-b', { 'qui-list--toogle': toogle }]">
         <div @click="goApp(app.url)" class="app-list qui-fx-ac-jc" v-for="(app, index) in appList" :key="index">
-          <div class="app-img" :style="{backgroundColor: bgCol[app.randomNum]}">
+          <div class="app-img" :style="{ backgroundColor: bgCol[app.randomNum] }">
             <img :src="app.icon" alt="" />
           </div>
-          <div class="app-name" :style="{color: bgCol[app.randomNum]}">{{app.name}}</div>
+          <div class="app-name" :style="{ color: bgCol[app.randomNum] }">
+            {{ app.name }}
+          </div>
         </div>
       </div>
       <div class="module-list qui-fx-wp">
-        <div @click="goApp(app.url)" class="app-list module-app qui-fx-ac-jc" v-for="(app, index) in moduleList" :key="index">
-          <div class="app-img" :style="{backgroundColor: bgCol[app.randomNum]}">
+        <div
+          @click="goApp(app.url)"
+          class="app-list module-app qui-fx-ac-jc"
+          v-for="(app, index) in moduleList"
+          :key="index"
+        >
+          <div class="app-img" :style="{ backgroundColor: bgCol[app.randomNum] }">
             <img :src="app.icon" alt="" />
           </div>
-          <div class="app-name" :style="{color: bgCol[app.randomNum]}">{{app.name}}</div>
+          <div class="app-name" :style="{ color: bgCol[app.randomNum] }">
+            {{ app.name }}
+          </div>
         </div>
       </div>
     </div>
@@ -37,9 +45,8 @@ import show from './img/show.png'
 
 export default {
   name: 'app',
-  components: {
-  },
-  data () {
+  components: {},
+  data() {
     return {
       title: 'Qui',
       show,
@@ -67,18 +74,24 @@ export default {
           icon: app,
           url: 'demo',
           randomNum: 2
+        },
+        {
+          id: 4,
+          name: '订单',
+          icon: app,
+          url: 'order',
+          randomNum: 3
         }
       ],
-      moduleList: [
-      ]
+      moduleList: []
     }
   },
   methods: {
-    toogleDemo () {
+    toogleDemo() {
       this.toogle = !this.toogle
       this.downTag = !this.downTag
     },
-    goApp (path) {
+    goApp(path) {
       if (path.indexOf('http') > -1) {
         window.open(path)
       } else {
@@ -86,80 +99,79 @@ export default {
       }
     }
   },
-  mounted () {
-  }
+  mounted() {}
 }
 </script>
 
 <style lang="less">
-  #header {
-    width: 100%;
-    background: #10436B;
-    padding: 0 .5rem;
+#header {
+  width: 100%;
+  background: #10436b;
+  padding: 0 0.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  .header-slide {
+    min-width: 4rem;
+  }
+  .co-header-title {
+    flex: 1;
+    color: #fff;
+    font-size: 0.8rem;
+    text-align: center;
+    height: 88px;
+    line-height: 88px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.down-img {
+  width: 36px;
+  height: 36px;
+  display: block;
+}
+.rit-btn {
+  transition: all 0.3s ease;
+}
+.down-aim {
+  transform: rotate(180deg);
+}
+.qui-list {
+  border-bottom: 1px #f5f5f5 solid;
+  transition: height 0.3s linear;
+  height: 0px;
+  overflow: hidden;
+}
+.qui-list--toogle {
+  height: 400px;
+}
+.app-list {
+  width: 33.33%;
+  .app-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
     text-align: center;
     display: flex;
+    justify-content: center;
     align-items: center;
-    .header-slide {
-      min-width:4rem
-    }
-    .co-header-title {
-      flex: 1;
-      color:#fff;
-      font-size: .8rem;
-      text-align: center;
-      height: 44Px;
-      line-height: 44Px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: block;
     }
   }
-  .down-img {
-    width: 36px;
-    height: 36px;
-    display: block
+  .app-name {
+    margin-top: 0.2rem;
+    color: #10436b;
+    font-size: 0.6rem;
   }
-  .rit-btn {
-    transition: all .3s ease
+}
+.module-list {
+  background: #fff;
+  .module-app {
+    padding: 0.5rem 0;
   }
-  .down-aim {
-    transform: rotate(180deg)
-  }
-  .qui-list {
-    border-bottom: 1px #f5f5f5 solid;
-    transition: height .3s linear;
-    height: 0px;
-    overflow: hidden;
-  }
-  .qui-list--toogle {
-    height: 180px;
-  }
-  .app-list {
-    width: 33.33%;
-    .app-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 10px;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        width: 1.5rem;
-        height: 1.5rem;
-        display: block
-      }
-    }
-    .app-name {
-      margin-top: .2rem;
-      color:#10436B;
-      font-size: .6rem;
-    }
-  }
-  .module-list {
-    background: #fff;
-    .module-app {
-      padding: .5rem 0;
-    }
-  }
+}
 </style>
