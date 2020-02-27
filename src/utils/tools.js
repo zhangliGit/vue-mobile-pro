@@ -5,11 +5,18 @@ import Vue from 'vue'
 const vm = new Vue({})
 const tools = {
   // 时间转化
-  gmtToDate (t) {
+  gmtToDate(t) {
     let d = new Date(t)
-    const date = d.getFullYear() + '/' + ((d.getMonth() + 1) > 9 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)) + '/' + (d.getDate() > 9 ? d.getDate() : '0' + d.getDate()) + ' ' +
-      (d.getHours() > 9 ? d.getHours() : '0' + d.getHours()) + ':' + (d.getMinutes() > 9 ? d.getMinutes() : '0' +
-        d.getMinutes())
+    const date =
+      d.getFullYear() +
+      '/' +
+      (d.getMonth() + 1 > 9 ? d.getMonth() + 1 : '0' + (d.getMonth() + 1)) +
+      '/' +
+      (d.getDate() > 9 ? d.getDate() : '0' + d.getDate()) +
+      ' ' +
+      (d.getHours() > 9 ? d.getHours() : '0' + d.getHours()) +
+      ':' +
+      (d.getMinutes() > 9 ? d.getMinutes() : '0' + d.getMinutes())
     return date
   },
   // 延迟处理方法
@@ -20,15 +27,18 @@ const tools = {
   },
   // confirm确定框
   delTip: (message, fn) => {
-    vm.$dialog.confirm({
-      title: '温馨提示',
-      message: message
-    }).then(() => {
-      if (fn) fn()
-    }).catch(() => {})
+    vm.$dialog
+      .confirm({
+        title: '温馨提示',
+        message: message
+      })
+      .then(() => {
+        if (fn) fn()
+      })
+      .catch(() => {})
   },
   // 列表数据加载(分页)
-  loadMoreData (type, fn, params, data, cb) {
+  loadMoreData(type, fn, params, data, cb) {
     if (type) {
       if (!this.isNextPage) {
         this.$toast({
@@ -58,7 +68,7 @@ const tools = {
     })
   },
   // 数据加载完毕
-  loadEnd () {
+  loadEnd() {
     vm.$toast({
       message: '数据已加载完毕',
       position: 'bottom'
@@ -67,4 +77,3 @@ const tools = {
 }
 
 export default tools
-

@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
 import $ajax from '@u/ajax-serve'
 import tools from '@u/tools'
 import '@u/filters.js'
@@ -16,9 +15,14 @@ attachFastClick.attach(document.body)
 /**
  * @description 处理fastClick导出文本输入框点击不灵敏bug
  */
-attachFastClick.prototype.focus = function (targetElement) {
+attachFastClick.prototype.focus = function(targetElement) {
   let length
-  if (targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month') {
+  if (
+    targetElement.setSelectionRange &&
+    targetElement.type.indexOf('date') !== 0 &&
+    targetElement.type !== 'time' &&
+    targetElement.type !== 'month'
+  ) {
     length = targetElement.value.length
     targetElement.focus()
     targetElement.setSelectionRange(length, length)
@@ -30,7 +34,6 @@ attachFastClick.prototype.focus = function (targetElement) {
 Vue.prototype.$ajax = $ajax
 Vue.prototype.$tools = tools
 new Vue({
-  store,
   router,
   render: h => h(App)
 }).$mount('#app')

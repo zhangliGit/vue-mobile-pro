@@ -33,7 +33,7 @@ axios.interceptors.response.use(
 
 const showToast = (tip = '') => {
   Vue.prototype.$toast.loading({
-    mask: true,
+    mask: false,
     message: tip,
     duration: 0
   })

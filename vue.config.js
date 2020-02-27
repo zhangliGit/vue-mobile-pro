@@ -20,6 +20,7 @@ module.exports = {
       .set('@p', resolve('src/pages'))
       .set('@a', resolve('src/assets'))
       .set('@c', resolve('src/components'))
+      .set('@com', resolve('src/components/common'))
       .set('@config', resolve('src/config/'))
       .set('@u', resolve('src/utils'))
   },
@@ -63,12 +64,12 @@ module.exports = {
     https: false,
     hotOnly: false,
     proxy: {
-      '/order': {
+      '/api': {
         target: 'http://39.97.246.227:8090',
         changeOrigin: true,
         ws: true,
         pathRewrite: {
-          '^/order': ''
+          '^/api': ''
         }
       }
     }

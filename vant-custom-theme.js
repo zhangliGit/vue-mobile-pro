@@ -1,3 +1,4 @@
 module.exports.theme = {
-  '@blue': '#7b92f5'
+  green: '#7b92f5',
+  'border-color': '#7b92f5'
 }

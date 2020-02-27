@@ -1,6 +1,7 @@
 <template>
   <div :class="'qui-fx-f1 qui-of scroll-list ' + className" ref="wrapper">
     <div :class="{'scroll-padd': isPadd}">
+      <no-data v-if="isEmpty && isShow" msg="暂无数据"></no-data>
       <slot></slot>
     </div>
   </div>
@@ -8,46 +9,60 @@
 
 <script>
 import BScroll from 'better-scroll'
+import NoData from './NoData'
 export default {
   name: 'ScrollList',
   props: {
+    isEmpty: {
+      type: Boolean,
+      default: true
+    },
     isPadd: {
-       type: Boolean,
-       default: false
+      type: Boolean,
+      default: false
     },
     pullUpLoad: {
       type: Boolean,
       default: false
+    },
+    total: {
+      type: Number,
+      default: 0
     },
     className: {
       type: String,
       default: ''
     }
   },
-  data () {
+  components: {
+    NoData
+  },
+  data() {
     return {
+      isShow: true
     }
   },
   methods: {
-    init () {
+    init(param = '') {
       try {
+        this.isShow = param && param.length === 0 ? true : false
         this.scroll.refresh()
       } catch (err) {}
     },
-    refresh () {
+    refresh() {
       try {
         this.scroll.finishPullUp()
         this.scroll.refresh()
       } catch (err) {}
     }
   },
-  mounted () {
+  mounted() {
     this.$nextTick(() => {
       if (!this.scroll) {
         const pullUpLoad = this.pullUpLoad
           ? {
-            threshold: 0
-          }
+              threshold: 0
+            }
           : false
         this.scroll = new BScroll(this.$refs.wrapper, {
           click: true,
@@ -66,11 +81,11 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-  .scroll-list {
-    position: relative;
-  }
-  .scroll-padd {
-    padding-top: 20px;
-    padding-bottom: 2px;
-  }
+.scroll-list {
+  position: relative;
+}
+.scroll-padd {
+  padding-top: 20px;
+  padding-bottom: 2px;
+}
 </style>

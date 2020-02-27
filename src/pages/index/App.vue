@@ -4,18 +4,21 @@
       <div class="header-slide qui-fx"></div>
       <div class="co-header-title">{{ title }}</div>
       <div class="header-slide qui-fx-je" @click="toogleDemo">
-        <img class="down-img" :src="show" alt="" />
+        <img class="down-img" :src="show" alt />
       </div>
     </div>
     <div class="fx-f1">
       <div :class="['qui-fx-wp qui-list qui-bd-b', { 'qui-list--toogle': toogle }]">
-        <div @click="goApp(app.url)" class="app-list qui-fx-ac-jc" v-for="(app, index) in appList" :key="index">
+        <div
+          @click="goApp(app.url)"
+          class="app-list qui-fx-ac-jc"
+          v-for="(app, index) in appList"
+          :key="index"
+        >
           <div class="app-img" :style="{ backgroundColor: bgCol[app.randomNum] }">
-            <img :src="app.icon" alt="" />
+            <img :src="app.icon" alt />
           </div>
-          <div class="app-name" :style="{ color: bgCol[app.randomNum] }">
-            {{ app.name }}
-          </div>
+          <div class="app-name" :style="{ color: bgCol[app.randomNum] }">{{ app.name }}</div>
         </div>
       </div>
       <div class="module-list qui-fx-wp">
@@ -26,11 +29,9 @@
           :key="index"
         >
           <div class="app-img" :style="{ backgroundColor: bgCol[app.randomNum] }">
-            <img :src="app.icon" alt="" />
+            <img :src="app.icon" alt />
           </div>
-          <div class="app-name" :style="{ color: bgCol[app.randomNum] }">
-            {{ app.name }}
-          </div>
+          <div class="app-name" :style="{ color: bgCol[app.randomNum] }">{{ app.name }}</div>
         </div>
       </div>
     </div>
@@ -59,7 +60,7 @@ export default {
           name: 'Qui文档',
           icon: docs,
           randomNum: 0,
-          url: 'http://192.168.1.28:3000/#/'
+          url: 'http://39.97.164.4:8090/'
         },
         {
           id: 2,
@@ -74,16 +75,17 @@ export default {
           icon: app,
           url: 'demo',
           randomNum: 2
-        },
-        {
-          id: 4,
-          name: '订单',
-          icon: app,
-          url: 'order',
-          randomNum: 3
         }
       ],
-      moduleList: []
+      moduleList: [
+        {
+          id: 1,
+          name: '平安校园',
+          icon: app,
+          url: 'protal',
+          randomNum: 3
+        }
+      ]
     }
   },
   methods: {
@@ -144,7 +146,7 @@ export default {
   overflow: hidden;
 }
 .qui-list--toogle {
-  height: 400px;
+  height: 200px;
 }
 .app-list {
   width: 33.33%;
