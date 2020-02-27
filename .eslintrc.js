@@ -13,6 +13,8 @@ module.exports = {
   },
   plugins: ['vue'],
   rules: {
-    'vue/valid-v-model': 0
+    'vue/valid-v-model': 0,
+    'no-undef': 0,
+    'no-console': 0
   }
 }

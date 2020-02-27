@@ -23,14 +23,17 @@ var url = 'http://192.168.2.247:8090/upload-web'
 var formData = {
   file: fs.createReadStream(path.resolve(__dirname, 'qui-component.zip'))
 }
-request.post({
-  url: url,
-  formData: formData
-}, function (error, response, body) {
-  if (!error && response.statusCode === 200) {
-    // 删除压缩包
-    fs.unlink('qui-component.zip', function () {})
-    console.log('上传成功')
-    clearInterval(time)
+request.post(
+  {
+    url: url,
+    formData: formData
+  },
+  function(error, response) {
+    if (!error && response.statusCode === 200) {
+      // 删除压缩包
+      fs.unlink('qui-component.zip', function() {})
+      console.log('上传成功')
+      clearInterval(time)
+    }
   }
-})
+)

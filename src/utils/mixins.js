@@ -3,9 +3,7 @@
  */
 
 const Mixins = {
-  methods: {
-
-  }
+  methods: {}
 }
 
 export default Mixins

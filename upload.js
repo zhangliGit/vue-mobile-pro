@@ -13,7 +13,7 @@ var zip = new AdmZip()
 const buildModule = process.argv[process.argv.length - 1]
 if (buildModule.indexOf('upload.js') > -1) {
   console.log('请输入上传模块')
-  return
+  process.exit(1)
 }
 zip.addLocalFolder('dist')
 zip.writeZip(`${buildModule}.zip`)
@@ -29,14 +29,17 @@ var url = 'http://192.168.2.247:8090/upload'
 var formData = {
   file: fs.createReadStream(path.resolve(__dirname, `${buildModule}.zip`))
 }
-request.post({
-  url: url,
-  formData: formData
-}, function (error, response, body) {
-  if (!error && response.statusCode === 200) {
-    // 删除压缩包
-    fs.unlink(`${buildModule}.zip`, function () {})
-    console.log('上传成功')
-    clearInterval(time)
+request.post(
+  {
+    url: url,
+    formData: formData
+  },
+  function(error, response) {
+    if (!error && response.statusCode === 200) {
+      // 删除压缩包
+      fs.unlink(`${buildModule}.zip`, function() {})
+      console.log('上传成功')
+      clearInterval(time)
+    }
   }
-})
+)

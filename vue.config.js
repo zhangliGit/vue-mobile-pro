@@ -55,13 +55,6 @@ module.exports = {
       }
     }
   },
-  css: {
-    loaderOptions: {
-      less: {
-        modifyVars: customTheme.theme
-      }
-    }
-  },
   // 本地访问代理
   devServer: {
     open: true,

@@ -7,7 +7,7 @@ import Vue from 'vue'
 const directives = {
   // 示例
   setBg: {
-    inserted (el, binding) {
+    inserted(el, binding) {
       el.style.backgroundColor = binding.value
     }
   }
